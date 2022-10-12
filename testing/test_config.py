@@ -285,7 +285,7 @@ class TestParseIni:
 
         result = pytester.runpytest("--strict-config")
         if exception_text:
-            result.stderr.fnmatch_lines("ERROR: " + exception_text)
+            result.stderr.fnmatch_lines(f"ERROR: {exception_text}")
             assert result.ret == pytest.ExitCode.USAGE_ERROR
         else:
             result.stderr.no_fnmatch_line(exception_text)
@@ -627,11 +627,7 @@ class TestConfigAPI:
 
     @pytest.mark.parametrize("maybe_type", ["not passed", "None", '"string"'])
     def test_addini(self, pytester: Pytester, maybe_type: str) -> None:
-        if maybe_type == "not passed":
-            type_string = ""
-        else:
-            type_string = f", {maybe_type}"
-
+        type_string = "" if maybe_type == "not passed" else f", {maybe_type}"
         pytester.makeconftest(
             f"""
             def pytest_addoption(parser):
@@ -1169,8 +1165,8 @@ def test_invalid_options_show_extra_information(pytester: Pytester) -> None:
     result.stderr.fnmatch_lines(
         [
             "*error: unrecognized arguments: --invalid-option*",
-            "*  inifile: %s*" % pytester.path.joinpath("tox.ini"),
-            "*  rootdir: %s*" % pytester.path,
+            f'*  inifile: {pytester.path.joinpath("tox.ini")}*',
+            f"*  rootdir: {pytester.path}*",
         ]
     )
 
@@ -1309,7 +1305,7 @@ def test_get_plugin_specs_as_list() -> None:
     with pytest.raises(pytest.UsageError, match=exp_match({"foo"})):
         _get_plugin_specs_as_list({"foo"})  # type: ignore[arg-type]
     with pytest.raises(pytest.UsageError, match=exp_match({})):
-        _get_plugin_specs_as_list(dict())  # type: ignore[arg-type]
+        _get_plugin_specs_as_list({})
 
     assert _get_plugin_specs_as_list(None) == []
     assert _get_plugin_specs_as_list("") == []
@@ -1652,10 +1648,10 @@ class TestOverrideIniArgs:
         self, monkeypatch: MonkeyPatch, _config_for_test, _sys_snapshot
     ) -> None:
         cache_dir = ".custom_cache"
-        monkeypatch.setenv("PYTEST_ADDOPTS", "-o cache_dir=%s" % cache_dir)
+        monkeypatch.setenv("PYTEST_ADDOPTS", f"-o cache_dir={cache_dir}")
         config = _config_for_test
         config._preparse([], addopts=True)
-        assert config._override_ini == ["cache_dir=%s" % cache_dir]
+        assert config._override_ini == [f"cache_dir={cache_dir}"]
 
     def test_addopts_from_env_not_concatenated(
         self, monkeypatch: MonkeyPatch, _config_for_test
@@ -1681,10 +1677,10 @@ class TestOverrideIniArgs:
         result = pytester.runpytest("cache_dir=ignored")
         result.stderr.fnmatch_lines(
             [
-                "%s: error: argument -o/--override-ini: expected one argument (via addopts config)"
-                % (pytester._request.config._parser.optparser.prog,)
+                f"{pytester._request.config._parser.optparser.prog}: error: argument -o/--override-ini: expected one argument (via addopts config)"
             ]
         )
+
         assert result.ret == _pytest.config.ExitCode.USAGE_ERROR
 
     def test_override_ini_does_not_contain_paths(
@@ -1770,10 +1766,10 @@ def test_help_and_version_after_argument_error(pytester: Pytester) -> None:
     result.stderr.fnmatch_lines(
         [
             "ERROR: usage: *",
-            "%s: error: argument --invalid-option-should-allow-for-help: expected one argument"
-            % (pytester._request.config._parser.optparser.prog,),
+            f"{pytester._request.config._parser.optparser.prog}: error: argument --invalid-option-should-allow-for-help: expected one argument",
         ]
     )
+
     # Does not display full/default help.
     assert "to see available markers type: pytest --markers" not in result.stdout.lines
     assert result.ret == ExitCode.USAGE_ERROR
@@ -1857,7 +1853,7 @@ def test_config_blocked_default_plugins(pytester: Pytester, plugin: str) -> None
             pytest.skip("does not work with xdist currently")
 
     p = pytester.makepyfile("def test(): pass")
-    result = pytester.runpytest(str(p), "-pno:%s" % plugin)
+    result = pytester.runpytest(str(p), f"-pno:{plugin}")
 
     if plugin == "python":
         assert result.ret == ExitCode.USAGE_ERROR
@@ -1873,7 +1869,7 @@ def test_config_blocked_default_plugins(pytester: Pytester, plugin: str) -> None
         result.stdout.fnmatch_lines(["* 1 passed in *"])
 
     p = pytester.makepyfile("def test(): assert 0")
-    result = pytester.runpytest(str(p), "-pno:%s" % plugin)
+    result = pytester.runpytest(str(p), f"-pno:{plugin}")
     assert result.ret == ExitCode.TESTS_FAILED
     if plugin != "terminal":
         result.stdout.fnmatch_lines(["* 1 failed in *"])

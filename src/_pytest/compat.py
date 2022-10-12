@@ -1,4 +1,5 @@
 """Python version compatibility code."""
+
 import enum
 import functools
 import inspect
@@ -20,15 +21,7 @@ from typing import Union
 import attr
 import py
 
-# fmt: off
-# Workaround for https://github.com/sphinx-doc/sphinx/issues/10351.
-# If `overload` is imported from `compat` instead of from `typing`,
-# Sphinx doesn't recognize it as `overload` and the API docs for
-# overloaded functions look good again. But type checkers handle
-# it fine.
-# fmt: on
-if True:
-    from typing import overload as overload
+from typing import overload as overload
 
 if TYPE_CHECKING:
     from typing_extensions import Final
@@ -211,10 +204,7 @@ def get_default_arg_names(function: Callable[..., Any]) -> Tuple[str, ...]:
 
 _non_printable_ascii_translate_table = {
     i: f"\\x{i:02x}" for i in range(128) if i not in range(32, 127)
-}
-_non_printable_ascii_translate_table.update(
-    {ord("\t"): "\\t", ord("\r"): "\\r", ord("\n"): "\\n"}
-)
+} | {ord("\t"): "\\t", ord("\r"): "\\r", ord("\n"): "\\n"}
 
 
 def _translate_non_printable(s: str) -> str:

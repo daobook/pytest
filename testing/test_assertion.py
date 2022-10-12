@@ -18,11 +18,15 @@ from _pytest.pytester import Pytester
 
 
 def mock_config(verbose=0):
+
+
+
     class Config:
         def getoption(self, name):
             if name == "verbose":
                 return verbose
-            raise KeyError("Not mocked out: %s" % name)
+            raise KeyError(f"Not mocked out: {name}")
+
 
     return Config()
 
@@ -52,7 +56,7 @@ class TestImportHookInstallation:
             """,
         }
         pytester.makepyfile(**contents)
-        result = pytester.runpytest_subprocess("--assert=%s" % mode)
+        result = pytester.runpytest_subprocess(f"--assert={mode}")
         if mode == "plain":
             expected = "E       AssertionError"
         elif mode == "rewrite":
@@ -114,7 +118,7 @@ class TestImportHookInstallation:
             """,
         }
         pytester.makepyfile(**contents)
-        result = pytester.runpytest_subprocess("--assert=%s" % mode)
+        result = pytester.runpytest_subprocess(f"--assert={mode}")
         if mode == "plain":
             expected = "E       AssertionError"
         elif mode == "rewrite":
@@ -233,8 +237,9 @@ class TestImportHookInstallation:
         }
         pytester.makepyfile(**contents)
         result = pytester.run(
-            sys.executable, "mainwrapper.py", "-s", "--assert=%s" % mode
+            sys.executable, "mainwrapper.py", "-s", f"--assert={mode}"
         )
+
         if mode == "plain":
             expected = "E       AssertionError"
         elif mode == "rewrite":
@@ -535,7 +540,7 @@ class TestAssert_reprcompare:
 
     def test_list_dont_wrap_strings(self) -> None:
         long_a = "a" * 10
-        l1 = ["a"] + [long_a for _ in range(0, 7)]
+        l1 = ["a"] + [long_a for _ in range(7)]
         l2 = ["should not get wrapped"]
         diff = callequal(l1, l2, verbose=True)
         assert diff == [
@@ -676,6 +681,7 @@ class TestAssert_reprcompare:
 
     def test_Sequence(self) -> None:
         # Test comparing with a Sequence subclass.
+
         class TestSequence(MutableSequence[int]):
             def __init__(self, iterable):
                 self.elements = list(iterable)
@@ -695,7 +701,7 @@ class TestAssert_reprcompare:
             def insert(self, item, index):
                 pass
 
-        expl = callequal(TestSequence([0, 1]), list([0, 2]))
+        expl = callequal(TestSequence([0, 1]), [0, 2])
         assert expl is not None
         assert len(expl) > 1
 
@@ -708,6 +714,7 @@ class TestAssert_reprcompare:
         assert len(expl) > 1
 
     def test_list_bad_repr(self) -> None:
+
         class A:
             def __repr__(self):
                 raise ValueError(42)
@@ -720,10 +727,7 @@ class TestAssert_reprcompare:
         assert expl[0].startswith("{} == <[ValueError")
         assert "raised in repr" in expl[0]
         assert expl[1:] == [
-            "(pytest_assertion plugin: representation of details failed:"
-            " {}:{}: ValueError: 42.".format(
-                __file__, A.__repr__.__code__.co_firstlineno + 1
-            ),
+            f"(pytest_assertion plugin: representation of details failed: {__file__}:{A.__repr__.__code__.co_firstlineno + 1}: ValueError: 42.",
             " Probably an object has a faulty __repr__.)",
         ]
 
@@ -781,18 +785,10 @@ class TestAssert_reprcompare:
         left = "hyv\xe4"
         right = "hyva\u0308"
         expl = callequal(left, right)
-        assert expl == [
-            r"'hyv\xe4' == 'hyva\u0308'",
-            f"- {str(right)}",
-            f"+ {str(left)}",
-        ]
+        assert expl == [r"'hyv\xe4' == 'hyva\u0308'", f"- {right}", f"+ {left}"]
 
         expl = callequal(left, right, verbose=2)
-        assert expl == [
-            r"'hyv\xe4' == 'hyva\u0308'",
-            f"- {str(right)}",
-            f"+ {str(left)}",
-        ]
+        assert expl == [r"'hyv\xe4' == 'hyva\u0308'", f"- {right}", f"+ {left}"]
 
 
 class TestAssert_reprcompare_dataclass:
@@ -1181,12 +1177,12 @@ class TestTruncateExplanation:
         assert result == expl
 
     def test_doesnt_truncate_at_when_input_is_5_lines_and_LT_max_chars(self) -> None:
-        expl = ["a" * 100 for x in range(5)]
+        expl = ["a" * 100 for _ in range(5)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=8 * 80)
         assert result == expl
 
     def test_truncates_at_8_lines_when_given_list_of_empty_strings(self) -> None:
-        expl = ["" for x in range(50)]
+        expl = ["" for _ in range(50)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=100)
         assert result != expl
         assert len(result) == 8 + self.LINES_IN_TRUNCATION_MSG
@@ -1196,7 +1192,7 @@ class TestTruncateExplanation:
         assert last_line_before_trunc_msg.endswith("...")
 
     def test_truncates_at_8_lines_when_first_8_lines_are_LT_max_chars(self) -> None:
-        expl = ["a" for x in range(100)]
+        expl = ["a" for _ in range(100)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=8 * 80)
         assert result != expl
         assert len(result) == 8 + self.LINES_IN_TRUNCATION_MSG
@@ -1206,7 +1202,7 @@ class TestTruncateExplanation:
         assert last_line_before_trunc_msg.endswith("...")
 
     def test_truncates_at_8_lines_when_first_8_lines_are_EQ_max_chars(self) -> None:
-        expl = ["a" * 80 for x in range(16)]
+        expl = ["a" * 80 for _ in range(16)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=8 * 80)
         assert result != expl
         assert len(result) == 8 + self.LINES_IN_TRUNCATION_MSG
@@ -1216,7 +1212,7 @@ class TestTruncateExplanation:
         assert last_line_before_trunc_msg.endswith("...")
 
     def test_truncates_at_4_lines_when_first_4_lines_are_GT_max_chars(self) -> None:
-        expl = ["a" * 250 for x in range(10)]
+        expl = ["a" * 250 for _ in range(10)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=999)
         assert result != expl
         assert len(result) == 4 + self.LINES_IN_TRUNCATION_MSG
@@ -1226,7 +1222,7 @@ class TestTruncateExplanation:
         assert last_line_before_trunc_msg.endswith("...")
 
     def test_truncates_at_1_line_when_first_line_is_GT_max_chars(self) -> None:
-        expl = ["a" * 250 for x in range(1000)]
+        expl = ["a" * 250 for _ in range(1000)]
         result = truncate._truncate_explanation(expl, max_lines=8, max_chars=100)
         assert result != expl
         assert len(result) == 1 + self.LINES_IN_TRUNCATION_MSG
