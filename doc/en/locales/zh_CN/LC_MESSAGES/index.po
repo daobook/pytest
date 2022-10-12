@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2015, holger krekel and pytest-dev team
 # This file is distributed under the same license as the pytest package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# xinetzone <735613050@qq.com>, 2022.
 #
 #, fuzzy
 msgid ""
@@ -44,7 +44,7 @@ msgstr ""
 
 #: ../../../en/index.rst:13
 msgid "pytest: helps you write better programs"
-msgstr ""
+msgstr "pytest：帮助编写更好的程序"
 
 #: ../../../en/index.rst:17
 msgid ""
@@ -52,6 +52,7 @@ msgid ""
 "and can scale to support complex functional testing for applications and "
 "libraries."
 msgstr ""
+"``pytest`` 框架使编写小型、可读的测试变得容易，并且可以扩展以支持应用程序和库的复杂功能测试。"
 
 #: ../../../en/index.rst:21
 msgid "``pytest`` requires: Python 3.7+ or PyPy3."
@@ -63,11 +64,11 @@ msgstr ""
 
 #: ../../../en/index.rst:27
 msgid "A quick example"
-msgstr ""
+msgstr "简单的例子"
 
 #: ../../../en/index.rst:40
 msgid "To execute it:"
-msgstr ""
+msgstr "执行："
 
 #: ../../../en/index.rst:65
 msgid ""
@@ -75,32 +76,37 @@ msgid ""
 "``assert`` statements are used. See :ref:`Get started <getstarted>` for a"
 " basic introduction to using pytest."
 msgstr ""
+"由于 ``pytest`` 的详细断言内省，只使用普通的 ``assert`` 语句。"
+"参见 :ref:`快速入门 <getstarted>` 获取使用 pytest 的基本介绍。"
 
 #: ../../../en/index.rst:70
 msgid "Features"
-msgstr ""
+msgstr "特性"
 
 #: ../../../en/index.rst:72
 msgid ""
 "Detailed info on failing :ref:`assert statements <assert>` (no need to "
 "remember ``self.assert*`` names)"
 msgstr ""
+"关于失败的详细信息 :ref:`assert 语句 <assert>` （不需要记住 ``self.assert*`` 的名字）"
 
 #: ../../../en/index.rst:74
 msgid ":ref:`Auto-discovery <test discovery>` of test modules and functions"
-msgstr ""
+msgstr "测试模块和函数 :ref:`Auto-discovery <test discovery>`"
 
 #: ../../../en/index.rst:76
 msgid ""
 ":ref:`Modular fixtures <fixture>` for managing small or parametrized "
 "long-lived test resources"
 msgstr ""
+":ref:`Modular fixtures <fixture>` 用于管理小型或参数化的 long-lived 测试资源"
 
 #: ../../../en/index.rst:78
 msgid ""
 "Can run :ref:`unittest <unittest>` (including trial) and :ref:`nose "
 "<noseintegration>` test suites out of the box"
 msgstr ""
+"是否可以开箱运行 :ref:`unittest <unittest>` （包括 trial）和 :ref:`nose <noseintegration>` 测试套件"
 
 #: ../../../en/index.rst:80
 msgid "Python 3.7+ or PyPy 3"
@@ -111,48 +117,54 @@ msgid ""
 "Rich plugin architecture, with over 800+ :ref:`external plugins <plugin-"
 "list>` and thriving community"
 msgstr ""
+"丰富的插件架构，拥有超过 800+ 的 :ref:`外部插件 <plugin-list>` 和欣欣向荣的社区"
 
 #: ../../../en/index.rst:86
 msgid "Documentation"
-msgstr ""
+msgstr "文档"
 
 #: ../../../en/index.rst:88
 msgid ""
 ":ref:`Get started <get-started>` - install pytest and grasp its basics "
 "just twenty minutes"
 msgstr ""
+":ref:`快速上手 <get-started>` - 安装 pytest 并在 20 分钟内掌握它的基础知识"
 
 #: ../../../en/index.rst:89
 msgid ""
 ":ref:`How-to guides <how-to>` - step-by-step guides, covering a vast "
 "range of use-cases and needs"
 msgstr ""
+":ref:`学习指南 <how-to>` - 一步一步的指南，涵盖了大量的用例和需求"
 
 #: ../../../en/index.rst:90
 msgid ""
 ":ref:`Reference guides <reference>` - includes the complete pytest API "
 "reference, lists of plugins and more"
 msgstr ""
+":ref:`参考指南<reference>` - 包括完整的 pytest API 参考，插件列表和更多"
 
 #: ../../../en/index.rst:91
 msgid ""
 ":ref:`Explanation <explanation>` - background, discussion of key topics, "
 "answers to higher-level questions"
 msgstr ""
+":ref:`解释 <explanation>` -背景，关键主题的讨论，对更高层次问题的回答"
 
 #: ../../../en/index.rst:95
 msgid "Bugs/Requests"
-msgstr ""
+msgstr "错误/请求"
 
 #: ../../../en/index.rst:97
 msgid ""
 "Please use the `GitHub issue tracker <https://github.com/pytest-"
 "dev/pytest/issues>`_ to submit bugs or request features."
 msgstr ""
+"请使用 `GitHub 问题跟踪器 <https://github.com/pytest-dev/pytest/issues>`_ 提交错误或请求功能。"
 
 #: ../../../en/index.rst:101
 msgid "Support pytest"
-msgstr ""
+msgstr "支持 pytest"
 
 #: ../../../en/index.rst:103
 msgid ""
@@ -160,24 +172,27 @@ msgid ""
 " communities. It provides tools to raise money and share your finances in"
 " full transparency."
 msgstr ""
+"`Open Collective`_ 是一个面向开放透明社区的在线融资平台。"
+"它提供了筹集资金和完全透明地分享你的财务状况的工具。"
 
 #: ../../../en/index.rst:106
 msgid ""
 "It is the platform of choice for individuals and companies that want to "
 "make one-time or monthly donations directly to the project."
 msgstr ""
+"对于想要一次性或每月直接向该项目捐款的个人和公司来说，这是一个选择的平台。"
 
 #: ../../../en/index.rst:109
 msgid "See more details in the `pytest collective`_."
-msgstr ""
+msgstr "更多细节见 `pytest collective`_。"
 
 #: ../../../en/index.rst:116
 msgid "pytest for enterprise"
-msgstr ""
+msgstr "pytest 之企业"
 
 #: ../../../en/index.rst:118
 msgid "Available as part of the Tidelift Subscription."
-msgstr ""
+msgstr "可作为 Tidelift 订阅的一部分。"
 
 #: ../../../en/index.rst:120
 msgid ""
@@ -187,6 +202,8 @@ msgid ""
 " risk, and improve code health, while paying the maintainers of the exact"
 " dependencies you use."
 msgstr ""
+"pytest 和数千个其他包的维护者正在与 tidellift 合作，为您用来构建应用程序的开源依赖提供商业支持和维护。"
+"节省时间、降低风险并改善代码健康状况，同时为您使用的确切依赖项的维护者付费。"
 
 #: ../../../en/index.rst:124
 msgid ""
@@ -194,10 +211,14 @@ msgid ""
 "pytest?utm_source=pypi-"
 "pytest&utm_medium=referral&utm_campaign=enterprise&utm_term=repo>`_"
 msgstr ""
+"了解更多。"
+"<https://tidelift.com/subscription/pkg/pypi-"
+"pytest?utm_source=pypi-"
+"pytest&utm_medium=referral&utm_campaign=enterprise&utm_term=repo>`_"
 
 #: ../../../en/index.rst:127
 msgid "Security"
-msgstr ""
+msgstr "安全"
 
 #: ../../../en/index.rst:129
 msgid ""
@@ -206,4 +227,5 @@ msgid ""
 "security contact <https://tidelift.com/security>`_. Tidelift will "
 "coordinate the fix and disclosure."
 msgstr ""
-
+"pytest 从未与安全漏洞关联，但在任何情况下，要报告安全漏洞，"
+"请使用 `Tidelift 安全联系 <https://tidelift.com/security>`_。Tidelift 将协调修复和披露。"

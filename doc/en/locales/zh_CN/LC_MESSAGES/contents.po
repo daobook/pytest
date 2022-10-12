@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../en/contents.rst:4
 msgid "Full pytest documentation"
-msgstr ""
+msgstr "完整的 pytest 文档"
 
 #: ../../../en/contents.rst:6
 msgid ""
@@ -29,21 +29,21 @@ msgstr ""
 
 #: ../../../en/contents.rst:12
 msgid "Start here"
-msgstr ""
+msgstr "这里开始"
 
 #: ../../../en/contents.rst:21
 msgid "How-to guides"
-msgstr ""
+msgstr "学习指南"
 
 #: ../../../en/contents.rst:54
 msgid "Reference guides"
-msgstr ""
+msgstr "参考指南"
 
 #: ../../../en/contents.rst:66
 msgid "Explanation"
-msgstr ""
+msgstr "解释"
 
 #: ../../../en/contents.rst:79
 msgid "Further topics"
-msgstr ""
+msgstr "进一步主题"
 

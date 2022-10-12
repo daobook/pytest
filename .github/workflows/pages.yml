@@ -42,8 +42,9 @@ jobs:
           pip install -r doc/en/requirements.txt
           sphinx-build -D language=zh_CN -b html ./doc/en ./doc/zh_CN/_build/html/zh_CN
       # 更新 PO
-      # sphinx-build -b gettext ./doc/en ./doc/zh_CN/_build/gettext
-      # sphinx-intl update -p ./doc/zh_CN/_build/gettext -l zh_CN
+      # cd ./doc/en
+      # sphinx-build -b gettext ./ ../zh_CN/_build/gettext
+      # sphinx-intl update -p ../zh_CN/_build/gettext -l zh_CN
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
