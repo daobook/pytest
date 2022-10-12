@@ -39,7 +39,6 @@ jobs:
       - name: 🔧 Build HTML
         run: |
           pip install -r doc/en/requirements.txt
-          cd doc
           sphinx-build -D language=zh_CN -b html ./doc/en ./doc/zh_CN/_build/html/zh_CN
       # 更新 PO
       # sphinx-build -b gettext ./doc/en ./doc/zh_CN/_build/gettext
