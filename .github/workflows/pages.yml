@@ -38,6 +38,7 @@ jobs:
           cache-dependency-path: "pyproject.toml"
       - name: 🔧 Build HTML
         run: |
+          pip install pytest
           pip install -r doc/en/requirements.txt
           sphinx-build -D language=zh_CN -b html ./doc/en ./doc/zh_CN/_build/html/zh_CN
       # 更新 PO
