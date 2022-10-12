@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, holger krekel and pytest-dev team
+# This file is distributed under the same license as the pytest package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pytest 7.1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-12 11:35+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: ../../../en/getting-started.rst:4
+msgid "Get Started"
+msgstr ""
+
+#: ../../../en/getting-started.rst:10
+msgid "Install ``pytest``"
+msgstr ""
+
+#: ../../../en/getting-started.rst:12
+msgid "``pytest`` requires: Python 3.7+ or PyPy3."
+msgstr ""
+
+#: ../../../en/getting-started.rst:14
+msgid "Run the following command in your command line:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:20
+msgid "Check that you installed the correct version:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:30
+msgid "Create your first test"
+msgstr ""
+
+#: ../../../en/getting-started.rst:32
+msgid ""
+"Create a new file called ``test_sample.py``, containing a function, and a"
+" test:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:44
+msgid "The test"
+msgstr ""
+
+#: ../../../en/getting-started.rst:69
+msgid ""
+"The ``[100%]`` refers to the overall progress of running all test cases. "
+"After it finishes, pytest then shows a failure report because ``func(3)``"
+" does not return ``5``."
+msgstr ""
+
+#: ../../../en/getting-started.rst:73
+msgid ""
+"You can use the ``assert`` statement to verify test expectations. "
+"pytest’s :ref:`Advanced assertion introspection <python:assert>` will "
+"intelligently report intermediate values of the assert expression so you "
+"can avoid the many names :ref:`of JUnit legacy methods <testcase-"
+"objects>`."
+msgstr ""
+
+#: ../../../en/getting-started.rst:76
+msgid "Run multiple tests"
+msgstr ""
+
+#: ../../../en/getting-started.rst:78
+msgid ""
+"``pytest`` will run all files of the form test_*.py or \\*_test.py in the"
+" current directory and its subdirectories. More generally, it follows "
+":ref:`standard test discovery rules <test discovery>`."
+msgstr ""
+
+#: ../../../en/getting-started.rst:82
+msgid "Assert that a certain exception is raised"
+msgstr ""
+
+#: ../../../en/getting-started.rst:84
+msgid ""
+"Use the :ref:`raises <assertraises>` helper to assert that some code "
+"raises an exception:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:100
+msgid "Execute the test function with “quiet” reporting mode:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:110
+msgid ""
+"The ``-q/--quiet`` flag keeps the output brief in this and following "
+"examples."
+msgstr ""
+
+#: ../../../en/getting-started.rst:113
+msgid "Group multiple tests in a class"
+msgstr ""
+
+#: ../../../en/getting-started.rst:117
+msgid ""
+"Once you develop multiple tests, you may want to group them into a class."
+" pytest makes it easy to create a class containing more than one test:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:131
+msgid ""
+"``pytest`` discovers all tests following its :ref:`Conventions for Python"
+" test discovery <test discovery>`, so it finds both ``test_`` prefixed "
+"functions. There is no need to subclass anything, but make sure to prefix"
+" your class with ``Test`` otherwise the class will be skipped. We can "
+"simply run the module by passing its filename:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:153
+msgid ""
+"The first test passed and the second failed. You can easily see the "
+"intermediate values in the assertion to help you understand the reason "
+"for the failure."
+msgstr ""
+
+#: ../../../en/getting-started.rst:155
+msgid "Grouping tests in classes can be beneficial for the following reasons:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:157
+msgid "Test organization"
+msgstr ""
+
+#: ../../../en/getting-started.rst:158
+msgid "Sharing fixtures for tests only in that particular class"
+msgstr ""
+
+#: ../../../en/getting-started.rst:159
+msgid ""
+"Applying marks at the class level and having them implicitly apply to all"
+" tests"
+msgstr ""
+
+#: ../../../en/getting-started.rst:161
+msgid ""
+"Something to be aware of when grouping tests inside classes is that each "
+"test has a unique instance of the class. Having each test share the same "
+"class instance would be very detrimental to test isolation and would "
+"promote poor test practices. This is outlined below:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:200
+msgid ""
+"Note that attributes added at class level are *class attributes*, so they"
+" will be shared between tests."
+msgstr ""
+
+#: ../../../en/getting-started.rst:203
+msgid "Request a unique temporary directory for functional tests"
+msgstr ""
+
+#: ../../../en/getting-started.rst:205
+msgid ""
+"``pytest`` provides :std:doc:`Builtin fixtures/function arguments "
+"<builtin>` to request arbitrary resources, like a unique temporary "
+"directory:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:214
+msgid ""
+"List the name ``tmp_path`` in the test function signature and ``pytest`` "
+"will lookup and call a fixture factory to create the resource before "
+"performing the test function call. Before the test runs, ``pytest`` "
+"creates a unique-per-test-invocation temporary directory:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:237
+msgid ""
+"More info on temporary directory handling is available at :ref:`Temporary"
+" directories and files <tmp_path handling>`."
+msgstr ""
+
+#: ../../../en/getting-started.rst:239
+msgid ""
+"Find out what kind of builtin :ref:`pytest fixtures <fixtures>` exist "
+"with the command:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:245
+msgid ""
+"Note that this command omits fixtures with leading ``_`` unless the "
+"``-v`` option is added."
+msgstr ""
+
+#: ../../../en/getting-started.rst:248
+msgid "Continue reading"
+msgstr ""
+
+#: ../../../en/getting-started.rst:250
+msgid ""
+"Check out additional pytest resources to help you customize tests for "
+"your unique workflow:"
+msgstr ""
+
+#: ../../../en/getting-started.rst:252
+msgid "\":ref:`usage`\" for command line invocation examples"
+msgstr ""
+
+#: ../../../en/getting-started.rst:253
+msgid "\":ref:`existingtestsuite`\" for working with pre-existing tests"
+msgstr ""
+
+#: ../../../en/getting-started.rst:254
+msgid "\":ref:`mark`\" for information on the ``pytest.mark`` mechanism"
+msgstr ""
+
+#: ../../../en/getting-started.rst:255
+msgid "\":ref:`fixtures`\" for providing a functional baseline to your tests"
+msgstr ""
+
+#: ../../../en/getting-started.rst:256
+msgid "\":ref:`plugins`\" for managing and writing plugins"
+msgstr ""
+
+#: ../../../en/getting-started.rst:257
+msgid "\":ref:`goodpractices`\" for virtualenv and test layouts"
+msgstr ""
+

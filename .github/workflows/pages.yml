@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["xin"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,15 +39,18 @@ jobs:
       - name: 🔧 Build HTML
         run: |
           pip install -r doc/en/requirements.txt
-          cd doc/en
-          sphinx-build -D language=zh_CN -b html ./ ../zh_CN
+          cd doc
+          sphinx-build -D language=zh_CN -b html ./doc/en ./doc/zh_CN/_build/html/zh_CN
+      # 更新 PO
+      # sphinx-build -b gettext ./doc/en ./doc/zh_CN/_build/gettext
+      # sphinx-intl update -p ./doc/zh_CN/_build/gettext -l zh_CN
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: 'doc/zh_CN/'
+          path: "./doc/zh_CN/_build/html/zh_CN"
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@main
