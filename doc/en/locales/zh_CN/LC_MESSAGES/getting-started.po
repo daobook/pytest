@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2015, holger krekel and pytest-dev team
 # This file is distributed under the same license as the pytest package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# xinetzone <735613050@qq.com>, 2022.
 #
 #, fuzzy
 msgid ""
@@ -19,37 +19,38 @@ msgstr ""
 
 #: ../../../en/getting-started.rst:4
 msgid "Get Started"
-msgstr ""
+msgstr "快速上手"
 
 #: ../../../en/getting-started.rst:10
 msgid "Install ``pytest``"
-msgstr ""
+msgstr "安装 ``pytest``"
 
 #: ../../../en/getting-started.rst:12
 msgid "``pytest`` requires: Python 3.7+ or PyPy3."
-msgstr ""
+msgstr "``pytest`` 需要：Python 3.7+ or PyPy3。"
 
 #: ../../../en/getting-started.rst:14
 msgid "Run the following command in your command line:"
-msgstr ""
+msgstr "在命令行中执行如下命令："
 
 #: ../../../en/getting-started.rst:20
 msgid "Check that you installed the correct version:"
-msgstr ""
+msgstr "检查你安装的版本是否正确："
 
 #: ../../../en/getting-started.rst:30
 msgid "Create your first test"
-msgstr ""
+msgstr "创建第一个测试"
 
 #: ../../../en/getting-started.rst:32
 msgid ""
 "Create a new file called ``test_sample.py``, containing a function, and a"
 " test:"
 msgstr ""
+"创建新文件 ``test_sample.py``，包含一个函数和一个测试："
 
 #: ../../../en/getting-started.rst:44
 msgid "The test"
-msgstr ""
+msgstr "测试"
 
 #: ../../../en/getting-started.rst:69
 msgid ""
@@ -57,6 +58,8 @@ msgid ""
 "After it finishes, pytest then shows a failure report because ``func(3)``"
 " does not return ``5``."
 msgstr ""
+"``[100%]`` 指的是运行所有测试用例的总体进度。"
+"在它完成之后，pytest 会显示失败报告，因为 ``func(3)`` 不会返回 ``5``。"
 
 #: ../../../en/getting-started.rst:73
 msgid ""
@@ -66,10 +69,13 @@ msgid ""
 "can avoid the many names :ref:`of JUnit legacy methods <testcase-"
 "objects>`."
 msgstr ""
+"您可以使用 ``assert`` 语句来验证测试期望。"
+"pytest 的 :ref:`高级断言内省 <python:assert>` 将智能地报告断言表达式的中间值，"
+"因此可以避免 :ref:`JUnit 遗留方法 <testcase-objects>` 的多个名称"
 
 #: ../../../en/getting-started.rst:76
 msgid "Run multiple tests"
-msgstr ""
+msgstr "运行多个测试"
 
 #: ../../../en/getting-started.rst:78
 msgid ""
@@ -77,36 +83,42 @@ msgid ""
 " current directory and its subdirectories. More generally, it follows "
 ":ref:`standard test discovery rules <test discovery>`."
 msgstr ""
+"``pytest`` 将运行当前目录及其子目录中所有形式为 test_*.py 或 \\*_test.py 的文件。"
+"更一般地，它遵循 :ref:`标准测试发现规则 <test discovery>`。"
 
 #: ../../../en/getting-started.rst:82
 msgid "Assert that a certain exception is raised"
-msgstr ""
+msgstr "断言引发了某个异常"
 
 #: ../../../en/getting-started.rst:84
 msgid ""
 "Use the :ref:`raises <assertraises>` helper to assert that some code "
 "raises an exception:"
 msgstr ""
+"使用 :ref:`raises <assertraises>` 报告模式执行测试函数："
 
 #: ../../../en/getting-started.rst:100
 msgid "Execute the test function with “quiet” reporting mode:"
-msgstr ""
+msgstr "使用 “quiet” 报告模式执行测试函数："
 
 #: ../../../en/getting-started.rst:110
 msgid ""
 "The ``-q/--quiet`` flag keeps the output brief in this and following "
 "examples."
 msgstr ""
+"``-q/--quiet`` 标志在本例和以下示例中保持输出简短。"
 
 #: ../../../en/getting-started.rst:113
 msgid "Group multiple tests in a class"
-msgstr ""
+msgstr "将多个测试分组到一个类中"
 
 #: ../../../en/getting-started.rst:117
 msgid ""
 "Once you develop multiple tests, you may want to group them into a class."
 " pytest makes it easy to create a class containing more than one test:"
 msgstr ""
+"开发了多个测试之后，您可能希望将它们分组到一个类中。"
+"pytest 可以轻松创建包含多个测试的类："
 
 #: ../../../en/getting-started.rst:131
 msgid ""
@@ -116,6 +128,10 @@ msgid ""
 " your class with ``Test`` otherwise the class will be skipped. We can "
 "simply run the module by passing its filename:"
 msgstr ""
+"pytest 按照 :ref:`Python 测试发现的约定 <test discovery>` 发现所有测试，"
+"因此它会发现带有 ``test_`` 前缀的两个函数。"
+"不需要子类化任何东西，但是要确保在类前面加上 Test，否则类将被跳过。"
+"可以通过传递它的文件名来简单地运行模块："
 
 #: ../../../en/getting-started.rst:153
 msgid ""
@@ -123,24 +139,26 @@ msgid ""
 "intermediate values in the assertion to help you understand the reason "
 "for the failure."
 msgstr ""
+"第一次测试通过了，第二次失败了。您可以很容易地看到断言中的中间值，以帮助您理解失败的原因。"
 
 #: ../../../en/getting-started.rst:155
 msgid "Grouping tests in classes can be beneficial for the following reasons:"
-msgstr ""
+msgstr "将测试分组到类中可能有以下好处："
 
 #: ../../../en/getting-started.rst:157
 msgid "Test organization"
-msgstr ""
+msgstr "有组织的 Test"
 
 #: ../../../en/getting-started.rst:158
 msgid "Sharing fixtures for tests only in that particular class"
-msgstr ""
+msgstr "仅在该特定类中为测试共享 fixture"
 
 #: ../../../en/getting-started.rst:159
 msgid ""
 "Applying marks at the class level and having them implicitly apply to all"
 " tests"
 msgstr ""
+"在类级别应用标记，并将其隐式应用于所有测试"
 
 #: ../../../en/getting-started.rst:161
 msgid ""
@@ -149,16 +167,19 @@ msgid ""
 "class instance would be very detrimental to test isolation and would "
 "promote poor test practices. This is outlined below:"
 msgstr ""
+"当在类中分组测试时，需要注意的一点是，每个测试都有一个惟一的类实例。"
+"让每个测试共享相同的类实例将非常不利于测试隔离，并将促进糟糕的测试实践。概述如下："
 
 #: ../../../en/getting-started.rst:200
 msgid ""
 "Note that attributes added at class level are *class attributes*, so they"
 " will be shared between tests."
 msgstr ""
+"注意，在类级别添加的属性是 *类属性*，所以它们将在测试之间共享。"
 
 #: ../../../en/getting-started.rst:203
 msgid "Request a unique temporary directory for functional tests"
-msgstr ""
+msgstr "为功能测试请求一个惟一的临时目录"
 
 #: ../../../en/getting-started.rst:205
 msgid ""
@@ -166,6 +187,7 @@ msgid ""
 "<builtin>` to request arbitrary resources, like a unique temporary "
 "directory:"
 msgstr ""
+"``pytest`` 提供 :std:doc:`内建 fixture/function arguments <builtin>` 来请求任意资源，比如一个唯一的临时目录："
 
 #: ../../../en/getting-started.rst:214
 msgid ""
@@ -174,56 +196,62 @@ msgid ""
 "performing the test function call. Before the test runs, ``pytest`` "
 "creates a unique-per-test-invocation temporary directory:"
 msgstr ""
+"在测试函数签名中列出名称 ``tmp_path``， ``pytest`` 将查找并调用 fixture 工厂，在执行测试函数调用之前创建资源。"
+"在测试运行之前， ``pytest`` 创建一个每个测试调用唯一的临时目录："
 
 #: ../../../en/getting-started.rst:237
 msgid ""
 "More info on temporary directory handling is available at :ref:`Temporary"
 " directories and files <tmp_path handling>`."
 msgstr ""
+"关于临时目录处理的更多信息可在 :ref:`临时目录和文件 <tmp_path handling>`"
 
 #: ../../../en/getting-started.rst:239
 msgid ""
 "Find out what kind of builtin :ref:`pytest fixtures <fixtures>` exist "
 "with the command:"
 msgstr ""
+"用命令找出内建 :ref:`pytest fixtures <fixtures>` 存在的类型："
 
 #: ../../../en/getting-started.rst:245
 msgid ""
 "Note that this command omits fixtures with leading ``_`` unless the "
 "``-v`` option is added."
 msgstr ""
+"注意，这个命令省略了以 ``_`` 开头的 fixture，除非添加了 ``-v`` 选项。"
 
 #: ../../../en/getting-started.rst:248
 msgid "Continue reading"
-msgstr ""
+msgstr "继续阅读"
 
 #: ../../../en/getting-started.rst:250
 msgid ""
 "Check out additional pytest resources to help you customize tests for "
 "your unique workflow:"
 msgstr ""
+"查阅其他 pytest 资源，以帮助您为独特的工作流定制测试："
 
 #: ../../../en/getting-started.rst:252
 msgid "\":ref:`usage`\" for command line invocation examples"
-msgstr ""
+msgstr "\":ref:`usage`\" 对于命令行调用示例"
 
 #: ../../../en/getting-started.rst:253
 msgid "\":ref:`existingtestsuite`\" for working with pre-existing tests"
-msgstr ""
+msgstr "\":ref:`existingtestsuite`\" 用于处理已存在的测试"
 
 #: ../../../en/getting-started.rst:254
 msgid "\":ref:`mark`\" for information on the ``pytest.mark`` mechanism"
-msgstr ""
+msgstr "\":ref:`mark`\" 是 ``pytest.mark`` 机制有关 pytest 的信息"
 
 #: ../../../en/getting-started.rst:255
 msgid "\":ref:`fixtures`\" for providing a functional baseline to your tests"
-msgstr ""
+msgstr "\":ref:`fixtures`\" 为您的测试提供功能基线"
 
 #: ../../../en/getting-started.rst:256
 msgid "\":ref:`plugins`\" for managing and writing plugins"
-msgstr ""
+msgstr "\":ref:`plugins`\" 用于管理和编写插件"
 
 #: ../../../en/getting-started.rst:257
 msgid "\":ref:`goodpractices`\" for virtualenv and test layouts"
-msgstr ""
+msgstr "\":ref:`goodpractices`\" 用于virtualenv和测试布局"
 

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../en/explanation/anatomy.rst:4
 msgid "Anatomy of a test"
-msgstr ""
+msgstr "测试的解剖"
 
 #: ../../../en/explanation/anatomy.rst:6
 msgid ""
@@ -28,6 +28,8 @@ msgid ""
 " expect. Behavior is not something that can be empirically measured, "
 "which is why writing tests can be challenging."
 msgstr ""
+"用最简单的话说，测试的目的是查看特定行为的结果，并确保结果与您所期望的一致。"
+"行为是无法通过经验测量的，这就是为什么编写测试具有挑战性。"
 
 #: ../../../en/explanation/anatomy.rst:11
 msgid ""
@@ -35,10 +37,11 @@ msgid ""
 "particular situation and/or stimuli. But exactly *how* or *why* something"
 " is done is not quite as important as *what* was done."
 msgstr ""
+"\"Behavior\" 是一些系统对特定情况和/或刺激作出反应的方式。但“怎样”或“为什么”做某事并不像“做了什么”那么重要。"
 
 #: ../../../en/explanation/anatomy.rst:15
 msgid "You can think of a test as being broken down into four steps:"
-msgstr ""
+msgstr "你可以把测试分为四个步骤："
 
 #: ../../../en/explanation/anatomy.rst:17
 msgid "**Arrange**"
@@ -66,6 +69,9 @@ msgid ""
 "query, generating some credentials for a user that doesn't exist yet, or "
 "just waiting for some process to finish."
 msgstr ""
+"**Arrange** 是我们为考试准备一切的地方。这意味着除了 \"**act**\" 之外的几乎所有东西。"
+"它是在排列多米诺骨牌，这样 **act** 就可以在一个改变状态的步骤中完成它的事情。"
+"这可能意味着准备对象、启动/终止服务、将记录输入数据库，甚至定义要查询的 URL、为还不存在的用户生成一些凭证，或者只是等待某个进程完成。"
 
 #: ../../../en/explanation/anatomy.rst:29
 msgid ""
@@ -75,6 +81,9 @@ msgid ""
 "resulting changed state that we can look at to make a judgement about the"
 " behavior. This typically takes the form of a function/method call."
 msgstr ""
+"**Act** 是启动我们想要测试的 **behavior** 的单一的、改变状态的动作。"
+"此行为执行了被测系统（system under test，简称 SUT）状态的更改，"
+"我们可以通过查看更改后的状态来对该行为做出判断。这通常采用函数/方法调用的形式。"
 
 #: ../../../en/explanation/anatomy.rst:35
 msgid ""
@@ -85,12 +94,17 @@ msgid ""
 " and apply our judgement to it. If something should be green, we'd say "
 "``assert thing == \"green\"``."
 msgstr ""
+"**Assert** 是我们查看结果状态的地方，并在尘埃落定后检查它是否像我们预期的那样。"
+"这是我们收集证据的地方，表明行为是否符合我们的预期。”
+“我们测试中的 ``assert`` 是我们进行测量/观察并应用我们的判断的地方。"
+"如果某个东西应该是绿色的，我们会说 ``assert thing == \"green\"``。"
 
 #: ../../../en/explanation/anatomy.rst:41
 msgid ""
 "**Cleanup** is where the test picks up after itself, so other tests "
 "aren't being accidentally influenced by it."
 msgstr ""
+"**Cleanup** 是测试在自己之后进行清理，这样其他测试就不会意外地受到它的影响。"
 
 #: ../../../en/explanation/anatomy.rst:44
 msgid ""
@@ -98,10 +112,12 @@ msgid ""
 "with the **arrange** step only providing the context. **Behavior** exists"
 " between **act** and **assert**."
 msgstr ""
+"在其核心，测试最终是 **act** 和 **assert** 步骤，而 **arrange** 步骤只提供上下文。"
+"**Behavior** 存在于 **act** 和 **assert** 之间。"
 
 #: ../../../en/explanation/fixtures.rst:4
 msgid "About fixtures"
-msgstr ""
+msgstr "关于 fixtures"
 
 #: ../../../en/explanation/fixtures.rst:6
 msgid ":ref:`how-to-fixtures`"
@@ -113,11 +129,11 @@ msgstr ""
 
 #: ../../../en/explanation/fixtures.rst:9
 msgid "pytest fixtures are designed to be explicit, modular and scalable."
-msgstr ""
+msgstr "pytest fixture 被设计成显式的、模块化的和可扩展的。"
 
 #: ../../../en/explanation/fixtures.rst:12
 msgid "What fixtures are"
-msgstr ""
+msgstr "fixtures 是什么"
 
 #: ../../../en/explanation/fixtures.rst:14
 msgid ""
@@ -127,6 +143,8 @@ msgid ""
 "include environment (for example a database configured with known "
 "parameters) or content (such as a dataset)."
 msgstr ""
+"在测试中，`fixture <https://en.wikipedia.org/wiki/Test_fixture#Software>`_ 为测试提供一个定义的、可靠的和一致的上下文。"
+"这可能包括环境(例如配置了已知参数的数据库)或内容(例如数据集)。"
 
 #: ../../../en/explanation/fixtures.rst:19
 msgid ""
@@ -136,6 +154,7 @@ msgid ""
 "*act* phase; this is a powerful technique for designing more complex "
 "tests."
 msgstr ""
+"fixture定义了组成测试的 *arrange* 阶段的步骤和数据(参见 :ref:`test-anatomy`)。"
 
 #: ../../../en/explanation/fixtures.rst:24
 msgid ""
@@ -144,6 +163,8 @@ msgid ""
 "by a test function there is typically a parameter (named after the "
 "fixture) in the test function's definition."
 msgstr ""
+"测试函数通过参数访问由 fixture 设置的服务、状态或其他操运算环境。"
+"对于测试函数使用的每个 fixture，在测试函数的定义中通常都有一个参数(以 fixture 命名)。"
 
 #: ../../../en/explanation/fixtures.rst:29
 msgid ""
@@ -151,6 +172,8 @@ msgid ""
 "it with :py:func:`@pytest.fixture <pytest.fixture>`. Here's a simple "
 "example of what a fixture in pytest might look like:"
 msgstr ""
+"可以通过用 :py:func:`@pytest.fixture <pytest.fixture>` 装饰器来告诉 pytest 特定的函数是 fixture。"
+"下面是简单的例子，说明 pytest 中的 fixture 可能是什么样子的："
 
 #: ../../../en/explanation/fixtures.rst:59
 msgid ""
@@ -158,28 +181,33 @@ msgid ""
 "depend on as many fixtures as you want, and fixtures can use other "
 "fixtures, as well. This is where pytest's fixture system really shines."
 msgstr ""
+"测试也不必局限于单一的 fixture。它们可以依赖于任意数量的 fixture，fixture 也可以使用其他 fixture。"
+"这是 pytest 的 fixture 系统真正的亮点。"
 
 #: ../../../en/explanation/fixtures.rst:65
 msgid "Improvements over xUnit-style setup/teardown functions"
-msgstr ""
+msgstr "对 xUnit 风格的 setup/teardown 函数的改进"
 
 #: ../../../en/explanation/fixtures.rst:67
 msgid ""
 "pytest fixtures offer dramatic improvements over the classic xUnit style "
 "of setup/teardown functions:"
 msgstr ""
+"pytest fixture 在经典的 xUnit 风格的 setup/teardown 函数上提供了显著的改进："
 
 #: ../../../en/explanation/fixtures.rst:70
 msgid ""
 "fixtures have explicit names and are activated by declaring their use "
 "from test functions, modules, classes or whole projects."
 msgstr ""
+"fixture 有显式名称，通过从测试函数、模块、类或整个项目中声明它们的使用来激活。"
 
 #: ../../../en/explanation/fixtures.rst:73
 msgid ""
 "fixtures are implemented in a modular manner, as each fixture name "
 "triggers a *fixture function* which can itself use other fixtures."
 msgstr ""
+"fixture 以模块化的方式实现，因为每个 fixture 名称触发一个 *fixture 函数*，该函数本身可以使用其他 fixture。"
 
 #: ../../../en/explanation/fixtures.rst:76
 msgid ""
@@ -188,6 +216,8 @@ msgid ""
 "and component options, or to re-use fixtures across function, class, "
 "module or whole test session scopes."
 msgstr ""
+"fixture 管理从简单的单元扩展到复杂的功能测试，允许根据配置和组件选项对夹具和测试进行参数化，"
+"或者跨函数、类、模块或整个测试会话范围重用 fixture。"
 
 #: ../../../en/explanation/fixtures.rst:81
 msgid ""
@@ -195,6 +225,7 @@ msgid ""
 "fixtures are used, without the need to carefully handle errors by hand or"
 " micromanage the order that cleanup steps are added."
 msgstr ""
+"无论使用了多少个 fixture，都可以轻松安全地管理 teardown 逻辑，而不需要手工小心地处理错误或微管理添加清理步骤的顺序。"
 
 #: ../../../en/explanation/fixtures.rst:85
 msgid ""
@@ -203,10 +234,12 @@ msgid ""
 "prefer.  You can also start out from existing :ref:`unittest.TestCase "
 "style <unittest.TestCase>` or :ref:`nose based <nosestyle>` projects."
 msgstr ""
+"此外，pytest 继续支持 :ref:`xunitsetup`。你可以混合这两种风格，根据你的喜好从经典风格逐渐过渡到新风格。"
+"你也可以从现有的 :ref:`unittest.TestCase style <unittest.TestCase>` 或 :ref:`nose based <nosestyle>` 项目开始。"
 
 #: ../../../en/explanation/fixtures.rst:93
 msgid "Fixture errors"
-msgstr ""
+msgstr "Fixture 错误"
 
 #: ../../../en/explanation/fixtures.rst:95
 msgid ""
@@ -216,6 +249,8 @@ msgid ""
 "exception, pytest will stop executing fixtures for that test and mark the"
 " test as having an error."
 msgstr ""
+"pytest 尽最大努力将给定测试的所有 fixture 按线性顺序排列，以便它可以看到哪个 fixture 发生在第一个、第二个、第三个，等等。"
+"但是，如果早期的 fixture 有问题并引发异常，pytest 将停止执行该测试的 fixture，并将该测试标记为有错误。"
 
 #: ../../../en/explanation/fixtures.rst:100
 msgid ""
@@ -223,6 +258,7 @@ msgid ""
 "failed, though. It just means the test couldn't even be attempted because"
 " one of the things it depends on had a problem."
 msgstr ""
+"当一个测试被标记为有错误时，并不意味着测试失败。这只是意味着测试甚至无法尝试，因为它所依赖的一个东西出了问题。"
 
 #: ../../../en/explanation/fixtures.rst:104
 msgid ""
@@ -231,10 +267,12 @@ msgid ""
 "something unrelated isn't causing us to have an incomplete picture of "
 "what may or may not have issues."
 msgstr ""
+"这就是为什么在给定的测试中尽可能地减少不必要的依赖是一个好主意。"
+"这样一来，不相关的问题就不会让我们对什么可能有问题或什么可能没有问题有不完整的认识。"
 
 #: ../../../en/explanation/fixtures.rst:109
 msgid "Here's a quick example to help explain:"
-msgstr ""
+msgstr "这里有一个简单的例子来帮助解释："
 
 #: ../../../en/explanation/fixtures.rst:140
 msgid ""
@@ -245,10 +283,13 @@ msgid ""
 "it won't even try to run ``test_order`` itself. The only things that "
 "would've run would be ``order`` and ``append_first``."
 msgstr ""
+"如果 ``order.append(1)`` 由于某种原因出现错误并引发异常，我们将无法知道 ``order.extend([2])`` 或 ``order += [3]`` 是否也有问题。"
+"在 ``append_first`` 抛出异常之后，pytest 将不再为 ``test_order`` 运行任何 fixture，"
+"它甚至不会尝试运行 ``test_order`` 本身。唯一会运行的是 ``order`` 和 ``append_first``。"
 
 #: ../../../en/explanation/fixtures.rst:149
 msgid "Sharing test data"
-msgstr ""
+msgstr "共享测试数据"
 
 #: ../../../en/explanation/fixtures.rst:151
 msgid ""
@@ -256,6 +297,8 @@ msgid ""
 "way to do this is by loading these data in a fixture for use by your "
 "tests. This makes use of the automatic caching mechanisms of pytest."
 msgstr ""
+"如果您想让来自文件的测试数据对您的测试可用，一个好方法是将这些数据加载到 fixture 中供您的测试使用。"
+"这利用了 pytest 的自动缓存机制。"
 
 #: ../../../en/explanation/fixtures.rst:155
 msgid ""
@@ -264,10 +307,12 @@ msgid ""
 " aspect of testing, e.g. :pypi:`pytest-datadir` and :pypi:`pytest-"
 "datafiles`."
 msgstr ""
+"另一个好方法是在 ``tests`` 文件夹中添加数据文件。"
+"还有一些社区插件可以帮助管理这方面的测试，例如 :pypi:`pytest-datadir` 和 :pypi:`pytest-datafiles`。"
 
 #: ../../../en/explanation/fixtures.rst:162
 msgid "A note about fixture cleanup"
-msgstr ""
+msgstr "关于 fixture 清理的说明"
 
 #: ../../../en/explanation/fixtures.rst:164
 msgid ""

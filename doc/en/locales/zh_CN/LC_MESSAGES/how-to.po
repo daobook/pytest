@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../../en/how-to/assert.rst:4
 msgid "How to write and report assertions in tests"
-msgstr ""
+msgstr "如何编写和报告测试中的断言"
 
 #: ../../../en/how-to/assert.rst:9
 msgid "Asserting with the ``assert`` statement"
-msgstr ""
+msgstr "使用 ``assert`` 语句断言"
 
 #: ../../../en/how-to/assert.rst:11
 msgid ""
@@ -31,12 +31,14 @@ msgid ""
 " expectations and values in Python tests.  For example, you can write the"
 " following:"
 msgstr ""
+"``pytest`` 允许您使用标准的 Python ``assert`` 来验证 Python 测试中的期望和值。例如，你可以这样写："
 
 #: ../../../en/how-to/assert.rst:25
 msgid ""
 "to assert that your function returns a certain value. If this assertion "
 "fails you will see the return value of the function call:"
 msgstr ""
+"来断言函数返回某个值。如果这个断言失败，你将看到函数调用的返回值："
 
 #: ../../../en/how-to/assert.rst:51
 msgid ""
@@ -46,34 +48,38 @@ msgid ""
 "idiomatic python constructs without boilerplate code while not losing "
 "introspection information."
 msgstr ""
+"``pytest`` 支持显示最常见的子表达式的值，包括调用、属性、比较以及二进制和一元运算符。(参见 :ref:`tbreportdemo`)。"
+"这允许您使用惯用的 python 结构而不需要样板代码，同时不会丢失自省信息。"
 
 #: ../../../en/how-to/assert.rst:57
 msgid "However, if you specify a message with the assertion like this:"
-msgstr ""
+msgstr "但是，如果你像这样用断言指定一条消息："
 
 #: ../../../en/how-to/assert.rst:63
 msgid ""
 "then no assertion introspection takes places at all and the message will "
 "be simply shown in the traceback."
 msgstr ""
+"那么就根本不会发生断言内省，消息将简单地显示在 traceback 中。"
 
 #: ../../../en/how-to/assert.rst:66
 msgid "See :ref:`assert-details` for more information on assertion introspection."
-msgstr ""
+msgstr "有关断言内省的更多信息，请参见 :ref:`assert-details`。"
 
 #: ../../../en/how-to/assert.rst:71
 msgid "Assertions about expected exceptions"
-msgstr ""
+msgstr "关于预期异常的断言"
 
 #: ../../../en/how-to/assert.rst:73
 msgid ""
 "In order to write assertions about raised exceptions, you can use "
 ":func:`pytest.raises` as a context manager like this:"
 msgstr ""
+"为了编写关于引发的异常的断言，可以使用 :func:`pytest.raises` 作为上下文管理器："
 
 #: ../../../en/how-to/assert.rst:85
 msgid "and if you need to have access to the actual exception info you may use:"
-msgstr ""
+msgstr "如果你需要访问实际的异常信息，你可以使用："
 
 #: ../../../en/how-to/assert.rst:98
 msgid ""
@@ -81,6 +87,8 @@ msgid ""
 "wrapper around the actual exception raised.  The main attributes of "
 "interest are ``.type``, ``.value`` and ``.traceback``."
 msgstr ""
+"``excinfo`` 是 :class:`~pytest.ExceptionInfo` 实例，它是引发的实际异常的包装器。"
+"主要感兴趣的属性是 ``.type``、``.value`` 和 ``.traceback``。"
 
 #: ../../../en/how-to/assert.rst:102
 msgid ""
@@ -89,6 +97,8 @@ msgid ""
 "exception (similar to the ``TestCase.assertRaisesRegex`` method from "
 "``unittest``):"
 msgstr ""
+"您可以向上下文管理器传递 ``match``  关键字参数，"
+"以测试正则表达式是否与异常的字符串表示相匹配（类似于来自 ``unittest`` 的 ``TestCase.assertRaisesRegex`` 方法）："
 
 #: ../../../en/how-to/assert.rst:119
 msgid ""
@@ -96,6 +106,7 @@ msgid ""
 "``re.search`` function, so in the above example ``match='123'`` would "
 "have worked as well."
 msgstr ""
+"``match`` 方法的 regexp 参数与 ``re.search`` 函数一致，所以在上面的例子中 ``match='123'`` 也可以工作。"
 
 #: ../../../en/how-to/assert.rst:123
 msgid ""
@@ -103,12 +114,15 @@ msgid ""
 " pass a function that will be executed with the given ``*args`` and "
 "``**kwargs`` and assert that the given exception is raised:"
 msgstr ""
+"还有 :func:`pytest.raises`  的另一种形式，在这里传递一个函数，"
+"该函数将与给定的 ``*args`` 和 ``**kwargs`` 一起执行，并断言给定的异常被引发："
 
 #: ../../../en/how-to/assert.rst:131
 msgid ""
 "The reporter will provide you with helpful output in case of failures "
 "such as *no exception* or *wrong exception*."
 msgstr ""
+"如果出现诸如 *no exception* 或 *wrong exception* 之类的错误，报告会为您提供有用的输出。"
 
 #: ../../../en/how-to/assert.rst:134
 msgid ""
@@ -116,6 +130,7 @@ msgid ""
 "``pytest.mark.xfail``, which checks that the test is failing in a more "
 "specific way than just having any exception raised:"
 msgstr ""
+"注意，也可以为 ``pytest.mark.xfail`` 指定 \"raises\" 参数，它以一种更具体的方式检查测试是否失败，而不仅仅是抛出任何异常："
 
 #: ../../../en/how-to/assert.rst:144
 msgid ""
@@ -125,64 +140,69 @@ msgid ""
 " something like documenting unfixed bugs (where the test describes what "
 "\"should\" happen) or bugs in dependencies."
 msgstr ""
+"使用 :func:`pytest.raises` 当您在测试自己的代码故意引发的异常时，而使用 ``@pytest.mark.xfail`` 可能会更好。"
+"可能更适合于记录未修复的 bug(测试描述应该发生什么)或依赖关系中的 bug。”"
 
 #: ../../../en/how-to/assert.rst:154
 msgid "Assertions about expected warnings"
-msgstr ""
+msgstr "关于预期警告的断言"
 
 #: ../../../en/how-to/assert.rst:158
 msgid ""
 "You can check that code raises a particular warning using "
 ":ref:`pytest.warns <warns>`."
 msgstr ""
+"您可以使用 :ref:`pytest.warns <warns>` 检查代码是否引发了特定的警告。"
 
 #: ../../../en/how-to/assert.rst:165
 msgid "Making use of context-sensitive comparisons"
-msgstr ""
+msgstr "使用上下文敏感的比较"
 
 #: ../../../en/how-to/assert.rst:169
 msgid ""
 "``pytest`` has rich support for providing context-sensitive information "
 "when it encounters comparisons.  For example:"
 msgstr ""
+"``pytest`` 具有丰富的支持，可以在遇到比较时提供上下文敏感的信息。例如："
 
 #: ../../../en/how-to/assert.rst:180
 msgid "if you run this module:"
-msgstr ""
+msgstr "如果你运行这个模块："
 
 #: ../../../en/how-to/assert.rst:211
 msgid "Special comparisons are done for a number of cases:"
-msgstr ""
+msgstr "对一些情况进行了特殊比较："
 
 #: ../../../en/how-to/assert.rst:213
 msgid "comparing long strings: a context diff is shown"
-msgstr ""
+msgstr "比较长字符串：显示上下文差异"
 
 #: ../../../en/how-to/assert.rst:214
 msgid "comparing long sequences: first failing indices"
-msgstr ""
+msgstr "比较长序列：第一个失败的索引"
 
 #: ../../../en/how-to/assert.rst:215
 msgid "comparing dicts: different entries"
-msgstr ""
+msgstr "比较字典：不同的条目"
 
 #: ../../../en/how-to/assert.rst:217
 msgid "See the :ref:`reporting demo <tbreportdemo>` for many more examples."
-msgstr ""
+msgstr "更多示例请参见 :ref:`reporting demo <tbreportdemo>`。"
 
 #: ../../../en/how-to/assert.rst:220
 msgid "Defining your own explanation for failed assertions"
-msgstr ""
+msgstr "为失败的断言定义自己的解释"
 
 #: ../../../en/how-to/assert.rst:222
 msgid ""
 "It is possible to add your own detailed explanations by implementing the "
 "``pytest_assertrepr_compare`` hook."
 msgstr ""
+"你可以通过实现 ``pytest_assertrepr_compare`` 钩子来添加你自己的详细解释。"
 
 #: _pytest.hookspec.pytest_assertrepr_compare:1 of
 msgid "Return explanation for comparisons in failing assert expressions."
-msgstr ""
+msgstr "返回在失败的断言表达式中比较的解释。"
 
 #: _pytest.hookspec.pytest_assertrepr_compare:3 of
 msgid ""
@@ -191,15 +211,17 @@ msgid ""
 "string will be escaped. Note that all but the first line will be indented"
 " slightly, the intention is for the first line to be a summary."
 msgstr ""
+"如果没有自定义解释，则返回 None，否则返回字符串列表。字符串将由换行符连接，但字符串中的换行符将被转义。"
+"注意，除了第一行以外的所有行都将轻微缩进，目的是使第一行成为摘要。"
 
 #: _pytest.hookspec.pytest_addhooks _pytest.hookspec.pytest_assertrepr_compare
 #: of
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: _pytest.hookspec.pytest_assertrepr_compare:8 of
 msgid "The pytest config object."
-msgstr ""
+msgstr "pytest 配置对象。"
 
 #: ../../../en/how-to/assert.rst:228
 msgid ""
@@ -207,20 +229,23 @@ msgid ""
 "<conftest.py>` file which provides an alternative explanation for ``Foo``"
 " objects:"
 msgstr ""
+"作为一个例子，考虑在 :ref:`conftest.py <conftest.py>` 文件中添加以下钩子，"
+"该文件为 ``Foo`` 对象提供了另一种解释："
 
 #: ../../../en/how-to/assert.rst:244
 msgid "now, given this test module:"
-msgstr ""
+msgstr "现在，给定这个测试模块："
 
 #: ../../../en/how-to/assert.rst:262
 msgid ""
 "you can run the test module and get the custom output defined in the "
 "conftest file:"
 msgstr ""
+"你可以运行测试模块并获得在 conftest 文件中定义的自定义输出："
 
 #: ../../../en/how-to/assert.rst:288
 msgid "Assertion introspection details"
-msgstr ""
+msgstr "断言内省的细节"
 
 #: ../../../en/how-to/assert.rst:291
 msgid ""
@@ -231,6 +256,9 @@ msgid ""
 "process, so **asserts in supporting modules which are not themselves test"
 " modules will not be rewritten**."
 msgstr ""
+"通过在运行断言语句之前重写断言语句，可以报告关于失败断言的详细信息。"
+"重写的断言语句将自检信息放入断言失败消息中。``pytest`` 只重写由它的测试收集过程直接发现的测试模块，"
+"因此 **在支持模块中断言本身不是测试模块的模块将不会被重写**。"
 
 #: ../../../en/how-to/assert.rst:297
 msgid ""
@@ -238,6 +266,8 @@ msgid ""
 "calling :ref:`register_assert_rewrite <assertion-rewriting>` before you "
 "import it (a good place to do that is in your root ``conftest.py``)."
 msgstr ""
+"你可以通过在导入模块之前调用 :ref:`register_assert_rewrite <assertion-rewriting>` "
+"来手动启用断言重写(在根目录 ``conftest.py`` 中是一个很好的地方)。"
 
 #: ../../../en/how-to/assert.rst:301
 msgid ""
@@ -298,7 +328,7 @@ msgstr ""
 
 #: ../../../en/how-to/bash-completion.rst:5
 msgid "How to set up bash completion"
-msgstr ""
+msgstr "如何设置 bash 自动补全"
 
 #: ../../../en/how-to/bash-completion.rst:7
 msgid ""
@@ -306,30 +336,32 @@ msgid ""
 "(https://kislyuk.github.io/argcomplete/) for auto-completion. For this "
 "``argcomplete`` needs to be installed **and** enabled."
 msgstr ""
+"当使用 bash 作为 shell 时，``pytest`` 可以使用 argcomplete (https://kislyuk.github.io/argcomplete/) 自动补全。"
+"为此 ``argcomplete`` 需要安装并启用。"
 
 #: ../../../en/how-to/bash-completion.rst:11
 msgid "Install argcomplete using:"
-msgstr ""
+msgstr "安装 argcomplete："
 
 #: ../../../en/how-to/bash-completion.rst:17
 msgid "For global activation of all argcomplete enabled python applications run:"
-msgstr ""
+msgstr "要全局激活所有启用 argcomplete 的 python 应用程序，请运行："
 
 #: ../../../en/how-to/bash-completion.rst:23
 msgid "For permanent (but not global) ``pytest`` activation, use:"
-msgstr ""
+msgstr "对于永久的(但不是全局的) ``pytest`` 激活，使用："
 
 #: ../../../en/how-to/bash-completion.rst:29
 msgid "For one-time activation of argcomplete for ``pytest`` only, use:"
-msgstr ""
+msgstr "对于一次性激活 argcomplete 只为 ``pytest``，使用:"
 
 #: ../../../en/how-to/cache.rst:6
 msgid "How to re-run failed tests and maintain state between test runs"
-msgstr ""
+msgstr "如何重新运行失败的测试并在测试运行之间保持状态"
 
 #: ../../../en/how-to/cache.rst:11 ../../../en/how-to/nose.rst:14
 msgid "Usage"
-msgstr ""
+msgstr "用法"
 
 #: ../../../en/how-to/cache.rst:13
 msgid ""
@@ -1540,7 +1572,7 @@ msgstr ""
 
 #: ../../../en/how-to/fixtures.rst:4
 msgid "How to use fixtures"
-msgstr ""
+msgstr "如何使用 fixtures"
 
 #: ../../../en/how-to/fixtures.rst:6
 msgid ":ref:`about-fixtures`"
@@ -1559,6 +1591,7 @@ msgid ""
 "At a basic level, test functions request fixtures they require by "
 "declaring them as arguments."
 msgstr ""
+"在基本层面上，测试函数通过将它们声明为参数来请求它们所需要的 fixture。"
 
 #: ../../../en/how-to/fixtures.rst:16
 msgid ""
@@ -1568,10 +1601,12 @@ msgid ""
 "fixtures, captures what they returned (if anything), and passes those "
 "objects into the test function as arguments."
 msgstr ""
+"当 pytest 运行一个测试时，它会查看该测试函数签名中的参数，然后搜索与这些参数具有相同名称的 fixture。"
+"一旦 pytest 找到它们，它就运行这些 fixture，捕获它们返回的内容(如果有的话)，并将这些对象作为参数传递给 test 函数。"
 
 #: ../../../en/how-to/fixtures.rst:24
 msgid "Quick example"
-msgstr ""
+msgstr "上手样例"
 
 #: ../../../en/how-to/fixtures.rst:63
 msgid ""
@@ -1580,14 +1615,16 @@ msgid ""
 "it will execute the ``fruit_bowl`` fixture function and pass the object "
 "it returns into ``test_fruit_salad`` as the ``fruit_bowl`` argument."
 msgstr ""
+"在这个例子中，``test_fruit_salad`` \"**requests**\" ``fruit_bowl`` (即 ``def test_fruit_salad(fruit_bowl):``)，"
+"当 pytest 看到这个时，它将执行 ``fruit_bowl`` fixture 函数，并将它返回的对象作为 ``fruit_bowl`` 参数传递给 ``test_fruit_salad``。"
 
 #: ../../../en/how-to/fixtures.rst:68
 msgid "Here's roughly what's happening if we were to do it by hand:"
-msgstr ""
+msgstr "如果我们用手来做，大概会发生这样的情况："
 
 #: ../../../en/how-to/fixtures.rst:91
 msgid "Fixtures can **request** other fixtures"
-msgstr ""
+msgstr "fixtures 可以 **request** 其他 fixtures"
 
 #: ../../../en/how-to/fixtures.rst:93
 msgid ""
@@ -1598,6 +1635,9 @@ msgid ""
 "further down, but for now, here's a quick example to demonstrate how "
 "fixtures can use other fixtures:"
 msgstr ""
+"pytest 最大的优势之一是其极其灵活的 fixture 系统。"
+"它允许我们将复杂的测试需求简化为更简单和有组织的函数，我们只需要让每个函数描述它们所依赖的东西。"
+"将进一步深入了解这一点，但现在，这里有一个快速的例子来演示 fixture 如何使用其他 fixture："
 
 #: ../../../en/how-to/fixtures.rst:125
 msgid ""
@@ -1606,10 +1646,13 @@ msgid ""
 "same **requesting** rules apply to fixtures that do for tests. Here's how"
 " this example would work if we did it by hand:"
 msgstr ""
+"注意，上面的例子是一样的，但变化很小。"
+"pytest 中的 fixture 像 tests 一样 **request** fixture。"
+"所有相同的 **request** 规则都适用于用于测试的 fixture。如果我们手工制作，这个例子是这样的："
 
 #: ../../../en/how-to/fixtures.rst:153
 msgid "Fixtures are reusable"
-msgstr ""
+msgstr "Fixtures 是可重用的"
 
 #: ../../../en/how-to/fixtures.rst:155
 msgid ""
@@ -1619,6 +1662,8 @@ msgid ""
 "different tests can request the same fixture and have pytest give each "
 "test their own result from that fixture."
 msgstr ""
+"pytest 的 fixture 系统如此强大的原因之一是，它使我们能够定义一个通用的 setup 步骤，可以像使用普通函数一样重复使用。"
+"两个不同的测试可以请求相同的 fixture，并让 pytest 为每个测试提供来自该 fixture 的自己的结果。"
 
 #: ../../../en/how-to/fixtures.rst:161
 msgid ""
@@ -1627,10 +1672,12 @@ msgid ""
 "batch of data and is starting from a clean state so it can provide "
 "consistent, repeatable results."
 msgstr ""
+"这对于确保测试之间不相互影响非常有用。"
+"我们可以使用这个系统来确保每个测试都有自己的新数据批次，并且是从一个干净的状态开始的，因此它可以提供一致的、可重复的结果。"
 
 #: ../../../en/how-to/fixtures.rst:165
 msgid "Here's an example of how this can come in handy:"
-msgstr ""
+msgstr "这里有一个例子来说明这是如何派上用场的："
 
 #: ../../../en/how-to/fixtures.rst:201
 msgid ""
@@ -1639,10 +1686,12 @@ msgid ""
 "for the ``first_entry`` fixture). If we were to do this by hand as well, "
 "it would look something like this:"
 msgstr ""
+"“这里的每个测试都被赋予了那个  ``list`` 对象的自己的副本，这意味着 ``order`` fixture 被执行了两次(对于 ``first_entry`` fixture 也是如此)。"
+"如果我们也用手来做，它看起来会是这样的："
 
 #: ../../../en/how-to/fixtures.rst:241
 msgid "A test/fixture can **request** more than one fixture at a time"
-msgstr ""
+msgstr "一个 test/fixture  可以一次 **request** 多个 fixture"
 
 #: ../../../en/how-to/fixtures.rst:243
 msgid ""
@@ -1650,12 +1699,15 @@ msgid ""
 " time. They can request as many as they like. Here's another quick "
 "example to demonstrate:"
 msgstr ""
+"测试和 fixtures 不限于 **requesting** 一个 fixture。"
+"他们想要多少就可以要多少。下面是另一个简单的例子："
 
 #: ../../../en/how-to/fixtures.rst:285
 msgid ""
 "Fixtures can be **requested** more than once per test (return values are "
 "cached)"
 msgstr ""
+"每个测试可以 **requested** 多次 fixture(返回值被缓存)"
 
 #: ../../../en/how-to/fixtures.rst:287
 msgid ""
@@ -1665,6 +1717,9 @@ msgid ""
 " even again in the test itself) without those fixtures being executed "
 "more than once."
 msgstr ""
+"在同一测试中，fixtures 也可以被 **requested** 多次，pytest 不会为该测试再次执行它们。"
+"这意味着我们可以在多个依赖于它们的 fixture中 **requested** fixture (甚至在测试本身中再次请求)，"
+"而无需多次执行这些 fixture。"
 
 #: ../../../en/how-to/fixtures.rst:320
 msgid ""
@@ -1677,10 +1732,14 @@ msgid ""
 "the same object, and the test saw the effect ``append_first`` had on that"
 " object."
 msgstr ""
+"如果 **requested** fixture 是每次执行一次 **requested** 的测试期间，这个测试会失败，"
+"因为 ``append_first`` 和 ``test_string_only`` 将 ``order`` 作为一个空列表(例如 ``[]``)，"
+"但由于 ``order`` 是缓存的返回值(连同任何副作用执行它可能有)它被称为第一次后，测试和 ``append_first`` 都引用同一个对象，"
+"和测试看到 ``append_first`` 对该对象的影响。"
 
 #: ../../../en/how-to/fixtures.rst:332
 msgid "Autouse fixtures (fixtures you don't have to request)"
-msgstr ""
+msgstr "Autouse fixture(不必请求的 fixture)"
 
 #: ../../../en/how-to/fixtures.rst:334
 msgid ""
@@ -1690,6 +1749,8 @@ msgid ""
 "of redundant **requests**, and can even provide more advanced fixture "
 "usage (more on that further down)."
 msgstr ""
+"有时，您可能希望拥有一个(甚至几个)您知道所有测试都将依赖的 fixture。\"Autouse\" fixtures 是使所有测试自动 **requests** 它们的一种方便方法。"
+"这可以减少大量冗余的 **requests**，甚至可以提供更高级的 fixture 使用(后面会详细介绍)。"
 
 #: ../../../en/how-to/fixtures.rst:340
 msgid ""
@@ -1697,6 +1758,7 @@ msgid ""
 "to the fixture's decorator. Here's a simple example for how they can be "
 "used:"
 msgstr ""
+"可以通过将 ``autouse=True`` 传递给 fixture 的装饰器来使一个 fixture 成为 autouse fixture。这里有一个简单的例子来说明如何使用它们："
 
 #: ../../../en/how-to/fixtures.rst:372
 msgid ""
@@ -1705,10 +1767,12 @@ msgid ""
 "though neither test **requested** it. That doesn't mean they *can't* be "
 "**requested** though; just that it isn't *necessary*."
 msgstr ""
+"在本例中，``append_first`` fixture 是 auuse fixture。"
+"因为它是自动发生的，所以两个测试都受到它的影响，即使没有一个测试请求它。但这并不意味着它们不能被要求；只是说这没有必要。"
 
 #: ../../../en/how-to/fixtures.rst:380
 msgid "Scope: sharing fixtures across classes, modules, packages or session"
-msgstr ""
+msgstr "范围：跨类、模块、包或会话共享 fixture"
 
 #: ../../../en/how-to/fixtures.rst:384
 msgid ""
@@ -1723,6 +1787,11 @@ msgid ""
 "instance, thus saving time. Possible values for ``scope`` are: "
 "``function``, ``class``, ``module``, ``package`` or ``session``."
 msgstr ""
+"需要网络访问的 fixture 依赖于连接性，通常需要花费大量时间来创建。"
+"扩展前面的例子，我们可以向 :py:func:`@pytest.fixture <pytest.fixture>` 添加 ``scope=\"module\"`` 参数，"
+"以使 ``smtp_connection`` 函数(负责创建到现有 SMTP 服务器的连接)在每个测试模块中只被调用一次(默认是每个测试函数调用一次)。"
+"因此，测试模块中的多个测试函数都将接收相同的 ``smtp_connection`` fixture 实例，从而节省时间。"
+"``scope`` 的可能值有：``function``、``class``、``module``、``package`` 或 ``session``。"
 
 #: ../../../en/how-to/fixtures.rst:394
 msgid ""
@@ -1730,6 +1799,7 @@ msgid ""
 "``conftest.py`` file so that tests from multiple test modules in the "
 "directory can access the fixture function:"
 msgstr ""
+"下一个示例将 fixture 函数放入单独的 ``conftest.py`` 文件中，以便来自目录中多个测试模块的测试可以访问 fixture 函数："
 
 #: ../../../en/how-to/fixtures.rst:428
 msgid ""
@@ -1738,6 +1808,8 @@ msgid ""
 "<pytest.fixture>` marked ``smtp_connection`` fixture function.  Running "
 "the test looks like this:"
 msgstr ""
+"在这里，``test_ehlo`` 需要 ``smtp_connection`` 的 fixture 值。"
+"pytest 将发现并调用 :py:func:`@pytest.fixture <pytest.fixture>` 标记的 ``smtp_connection`` fixture 函数。运行测试就像这样："
 
 #: ../../../en/how-to/fixtures.rst:471
 msgid ""
@@ -1748,40 +1820,48 @@ msgid ""
 "``smtp_connection`` run as quick as a single one because they reuse the "
 "same instance."
 msgstr ""
+"您可以看到两个 ``assert 0`` 失败，更重要的是，您还可以看到 **完全相同的** ``smtp_connection`` 对象被传递到两个测试函数中，"
+"因为 pytest 在回溯中显示传入的参数值。"
+"因此，使用 ``smtp_connection`` 的两个测试函数运行起来和单个测试函数一样快，因为它们重用同一个实例。"
 
 #: ../../../en/how-to/fixtures.rst:477
 msgid ""
 "If you decide that you rather want to have a session-scoped "
 "``smtp_connection`` instance, you can simply declare it:"
 msgstr ""
+"如果你决定你更想有一个会话范围的 ``smtp_connection`` 实例，你可以简单地声明它："
 
 #: ../../../en/how-to/fixtures.rst:490
 msgid "Fixture scopes"
-msgstr ""
+msgstr "Fixture 作用域"
 
 #: ../../../en/how-to/fixtures.rst:492
 msgid ""
 "Fixtures are created when first requested by a test, and are destroyed "
 "based on their ``scope``:"
 msgstr ""
+"当测试第一次请求时创建 fixture，并根据它们的 ``scope`` 销毁："
 
 #: ../../../en/how-to/fixtures.rst:494
 msgid ""
 "``function``: the default scope, the fixture is destroyed at the end of "
 "the test."
 msgstr ""
+"``function``：默认作用域，测试结束时 fixture 被销毁。"
 
 #: ../../../en/how-to/fixtures.rst:495
 msgid ""
 "``class``: the fixture is destroyed during teardown of the last test in "
 "the class."
 msgstr ""
+"``class``：在类中最后一个测试的 teardown 过程中，fixture 被销毁。"
 
 #: ../../../en/how-to/fixtures.rst:496
 msgid ""
 "``module``: the fixture is destroyed during teardown of the last test in "
 "the module."
 msgstr ""
+"``module``：在拆卸模块中最后一次测试时，fixture 被销毁。"
 
 #: ../../../en/how-to/fixtures.rst:497
 msgid ""
@@ -1799,10 +1879,11 @@ msgid ""
 "when using a parametrized fixture, pytest may invoke a fixture more than "
 "once in the given scope."
 msgstr ""
+"Pytest 一次只缓存一个 fixture 的实例，这意味着当使用参数化的 fixture 时，pytest 可以在给定的范围内多次调用一个 fixture。"
 
 #: ../../../en/how-to/fixtures.rst:509
 msgid "Dynamic scope"
-msgstr ""
+msgstr "动态作用域"
 
 #: ../../../en/how-to/fixtures.rst:513
 msgid ""
@@ -1813,6 +1894,10 @@ msgid ""
 "arguments - ``fixture_name`` as a string and ``config`` with a "
 "configuration object."
 msgstr ""
+"在某些情况下，您可能希望在不更改代码的情况下更改 fixture 的作用域。"
+"为此，将一个可调用对象传递给 ``scope``。"
+"可调用对象必须返回一个具有有效作用域的字符串，并且只会执行一次 —— 在 fixture 定义期间。"
+"它将用两个关键字参数调用 —— 作为字符串的 ``fixture_name`` 和带有配置对象的 ``config``。"
 
 #: ../../../en/how-to/fixtures.rst:518
 msgid ""
@@ -1821,10 +1906,12 @@ msgid ""
 " argument to control the scope of the spawned containers for different "
 "environments. See the example below."
 msgstr ""
+"这在处理需要时间设置的 fixture 时特别有用，比如生成 docker 容器。"
+"您可以使用命令行参数来控制不同环境派生的容器的作用域。请看下面的例子。"
 
 #: ../../../en/how-to/fixtures.rst:539
 msgid "Teardown/Cleanup (AKA Fixture finalization)"
-msgstr ""
+msgstr "Teardown/Cleanup（又名 Fixture 终结）"
 
 #: ../../../en/how-to/fixtures.rst:541
 msgid ""
@@ -1834,14 +1921,16 @@ msgid ""
 " in pytest offer a very useful teardown system, which allows us to define"
 " the specific steps necessary for each fixture to clean up after itself."
 msgstr ""
+"当我们运行我们的测试时，我们想要确保它们自己清理，这样它们就不会干扰任何其他测试(也不会留下如山的测试数据，使系统膨胀)。"
+"pytest 中的夹具提供了一个非常有用的拆卸系统，它允许我们定义每个夹具的具体清理步骤。"
 
 #: ../../../en/how-to/fixtures.rst:547
 msgid "This system can be leveraged in two ways."
-msgstr ""
+msgstr "可以通过两种方式利用这个系统。"
 
 #: ../../../en/how-to/fixtures.rst:552
 msgid "1. ``yield`` fixtures (recommended)"
-msgstr ""
+msgstr "1. ``yield`` fixtures（推荐）"
 
 #: ../../../en/how-to/fixtures.rst:556
 msgid ""
@@ -1850,14 +1939,16 @@ msgid ""
 "fixture/test, just like with the other fixtures. The only differences "
 "are:"
 msgstr ""
+"\"Yield\" fixtures 使用 ``yield`` 而不是 ``return``。"
+"使用这些 fixture，我们可以运行一些代码并将对象传递回请求的 fixture/test，就像使用其他 fixture 一样。唯一的区别是："
 
 #: ../../../en/how-to/fixtures.rst:560
 msgid "``return`` is swapped out for ``yield``."
-msgstr ""
+msgstr "``return`` 被替换为 ``yield``。"
 
 #: ../../../en/how-to/fixtures.rst:561
 msgid "Any teardown code for that fixture is placed *after* the ``yield``."
-msgstr ""
+msgstr "该 fixture 的任何拆卸代码都放在 ``yield`` 之后。"
 
 #: ../../../en/how-to/fixtures.rst:563
 msgid ""
@@ -1865,6 +1956,7 @@ msgid ""
 " one up until it returns or yields, and then move on to the next fixture "
 "in the list to do the same thing."
 msgstr ""
+"一旦 pytest 找出固定装置的线性顺序，它将运行每一个，直到它返回或产生，然后移动到列表中的下一个固定装置做同样的事情。"
 
 #: ../../../en/how-to/fixtures.rst:567
 msgid ""
@@ -1872,10 +1964,11 @@ msgid ""
 " but in the *reverse order*, taking each one that yielded, and running "
 "the code inside it that was *after* the ``yield`` statement."
 msgstr ""
+"一旦测试完成，pytest 将返回 fixture 列表，但是以 *相反的顺序*，取每个产生结果的 fixture，并运行其中在 ``yield`` 语句之后的代码。"
 
 #: ../../../en/how-to/fixtures.rst:571
 msgid "As a simple example, consider this basic email module:"
-msgstr ""
+msgstr "作为一个简单的例子，考虑这个基本的电子邮件模块："
 
 #: ../../../en/how-to/fixtures.rst:601
 msgid ""
@@ -1886,16 +1979,20 @@ msgid ""
 "have to make sure the other user's mailbox is emptied before deleting "
 "that user, otherwise the system may complain."
 msgstr ""
+"假设我们想测试从一个用户向另一个用户发送电子邮件。"
+"我们将首先创建每个用户，然后将电子邮件从一个用户发送给另一个用户，最后断言另一个用户在他们的收件箱中收到了该消息。"
+"如果我们想在测试运行后进行清理，我们可能必须确保在删除该用户之前清空其他用户的邮箱，否则系统可能会报错。"
 
 #: ../../../en/how-to/fixtures.rst:608 ../../../en/how-to/fixtures.rst:907
 msgid "Here's what that might look like:"
-msgstr ""
+msgstr "下面是它可能的样子："
 
 #: ../../../en/how-to/fixtures.rst:643
 msgid ""
 "Because ``receiving_user`` is the last fixture to run during setup, it's "
 "the first to run during teardown."
 msgstr ""
+"因为 ``receiving_user`` 是在 setup 过程中运行的最后一个 fixture，所以它是在拆卸过程中首先运行的。"
 
 #: ../../../en/how-to/fixtures.rst:646
 msgid ""
@@ -1903,10 +2000,11 @@ msgid ""
 "things doesn't guarantee a safe cleanup. That's covered in a bit more "
 "detail in :ref:`safe teardowns`."
 msgstr ""
+"有一个风险是，即使在拆卸方面有正确的 order，也不能保证安全清理。这在 :ref:`safe teardowns` 中有更详细的介绍。"
 
 #: ../../../en/how-to/fixtures.rst:657
 msgid "Handling errors for yield fixture"
-msgstr ""
+msgstr "yield fixture 的处理错误"
 
 #: ../../../en/how-to/fixtures.rst:659
 msgid ""
@@ -1915,6 +2013,8 @@ msgid ""
 "But, for every fixture that has already run successfully for that test, "
 "pytest will still attempt to tear them down as it normally would."
 msgstr ""
+"如果 yield fixture 在 yield 之前引发异常，pytest 将不会在 yield fixture 的 ``yield`` 语句之后尝试运行拆卸代码。"
+"但是，对于每一个已经在测试中成功运行的装置，pytest 仍然会试图像往常一样将其拆除。"
 
 #: ../../../en/how-to/fixtures.rst:665
 msgid "2. Adding finalizers directly"
@@ -1984,7 +2084,7 @@ msgstr ""
 
 #: ../../../en/how-to/fixtures.rst:825
 msgid "Safe teardowns"
-msgstr ""
+msgstr "安全拆解"
 
 #: ../../../en/how-to/fixtures.rst:827
 msgid ""
@@ -1994,12 +2094,15 @@ msgid ""
 "spot might leave stuff from our tests behind, and that can cause further "
 "issues pretty quickly."
 msgstr ""
+"pytest 的 fixture 系统非常强大，但它仍然是由计算机运行的，所以它无法想出如何安全地拆卸我们扔给它的所有东西。"
+"如果我们不小心，错误位置的错误可能会把测试中的内容留下，这很快就会导致进一步的问题。"
 
 #: ../../../en/how-to/fixtures.rst:832
 msgid ""
 "For example, consider the following tests (based off of the mail example "
 "from above):"
 msgstr ""
+"例如，考虑以下测试(基于上面的邮件示例):"
 
 #: ../../../en/how-to/fixtures.rst:860
 msgid ""
@@ -2007,12 +2110,14 @@ msgid ""
 " have a very descriptive fixture name, and none of the fixtures can be "
 "reused easily."
 msgstr ""
+"这个版本更紧凑，但也更难阅读，没有非常描述性的 fixture 名称，而且没有一个 fixture 可以轻松重用。"
 
 #: ../../../en/how-to/fixtures.rst:863
 msgid ""
 "There's also a more serious issue, which is that if any of those steps in"
 " the setup raise an exception, none of the teardown code will run."
 msgstr ""
+"还有一个更严重的问题，那就是如果安装过程中的任何一个步骤引发了异常，那么任何一个拆卸代码都不会运行。"
 
 #: ../../../en/how-to/fixtures.rst:866
 msgid ""
@@ -2201,7 +2306,7 @@ msgstr ""
 
 #: ../../../en/how-to/fixtures.rst:1179
 msgid "Using markers to pass data to fixtures"
-msgstr ""
+msgstr "使用标记将数据传递给 fixture"
 
 #: ../../../en/how-to/fixtures.rst:1181
 msgid ""
@@ -2209,10 +2314,12 @@ msgid ""
 " fixture can also access markers which are applied to a test function. "
 "This can be useful to pass data into a fixture from a test:"
 msgstr ""
+"使用 :py:class:`request <_pytest.fixtures.FixtureRequest>` 对象，fixture 还可以访问应用于测试函数的标记。"
+"这对于从测试中将数据传递到 fixture 是很有用的："
 
 #: ../../../en/how-to/fixtures.rst:1210
 msgid "Factories as fixtures"
-msgstr ""
+msgstr "fixtures 工厂"
 
 #: ../../../en/how-to/fixtures.rst:1212
 msgid ""
@@ -2222,20 +2329,23 @@ msgid ""
 "generates the data. This function can then be called multiple times in "
 "the test."
 msgstr ""
+"作为 \"fixture 的工厂\" 模式可以在一个测试中多次需要一个 fixture 的结果的情况下提供帮助。"
+"该 fixture 不是直接返回数据，而是返回一个生成数据的函数。这个函数可以在测试中被多次调用。"
 
 #: ../../../en/how-to/fixtures.rst:1217
 msgid "Factories can have parameters as needed:"
-msgstr ""
+msgstr "工厂可以根据需要设置参数："
 
 #: ../../../en/how-to/fixtures.rst:1234
 msgid ""
 "If the data created by the factory requires managing, the fixture can "
 "take care of that:"
 msgstr ""
+"如果工厂创建的数据需要管理，fixture 可以处理："
 
 #: ../../../en/how-to/fixtures.rst:1263
 msgid "Parametrizing fixtures"
-msgstr ""
+msgstr "参数化 fixtures"
 
 #: ../../../en/how-to/fixtures.rst:1265
 msgid ""
@@ -2246,6 +2356,8 @@ msgid ""
 "exhaustive functional tests for components which themselves can be "
 "configured in multiple ways."
 msgstr ""
+"Fixture 函数可以参数化，在这种情况下，它们将被多次调用，每次执行一组依赖测试，即依赖于此 Fixture 的测试。"
+"测试函数通常不需要知道它们的重新运行。Fixture 参数化有助于编写对组件进行详尽的功能测试以多种方式进行配置。"
 
 #: ../../../en/how-to/fixtures.rst:1272
 msgid ""
@@ -2318,7 +2430,7 @@ msgstr ""
 #: ../../../en/how-to/fixtures.rst:1450 ../../../en/how-to/output.rst:284
 #: ../../../en/how-to/writing_hook_functions.rst:224
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../en/how-to/fixtures.rst:1466
 msgid ""
@@ -2579,31 +2691,31 @@ msgstr ""
 
 #: ../../../en/how-to/index.rst:6
 msgid "How-to guides"
-msgstr ""
+msgstr "学习指南"
 
 #: ../../../en/how-to/index.rst:9
 msgid "Core pytest functionality"
-msgstr ""
+msgstr "pytest 核心功能"
 
 #: ../../../en/how-to/index.rst:25
 msgid "Test output and outcomes"
-msgstr ""
+msgstr "测试输出和结果"
 
 #: ../../../en/how-to/index.rst:38
 msgid "Plugins"
-msgstr ""
+msgstr "插件"
 
 #: ../../../en/how-to/index.rst:48
 msgid "pytest and other test systems"
-msgstr ""
+msgstr "pytest 和其他测试系统"
 
 #: ../../../en/how-to/index.rst:59
 msgid "pytest development environment"
-msgstr ""
+msgstr "pytest开发环境"
 
 #: ../../../en/how-to/logging.rst:4
 msgid "How to manage logging"
-msgstr ""
+msgstr "如何管理日志记录"
 
 #: ../../../en/how-to/logging.rst:6
 msgid ""
@@ -2611,20 +2723,23 @@ msgid ""
 "and displays them in their own section for each failed test in the same "
 "manner as captured stdout and stderr."
 msgstr ""
+"pytest 自动捕获级别为 ``WARNING`` 或以上的日志消息，"
+"并以捕获的 stdout 和 stderr 相同的方式将它们显示在每个失败测试的单独部分中。"
 
 #: ../../../en/how-to/logging.rst:9
 msgid "Running without options:"
-msgstr ""
+msgstr "运行没有选项："
 
 #: ../../../en/how-to/logging.rst:15 ../../../en/how-to/logging.rst:38
 msgid "Shows failed tests like so:"
-msgstr ""
+msgstr "显示失败测试的结果："
 
 #: ../../../en/how-to/logging.rst:27
 msgid ""
 "By default each captured log message shows the module, line number, log "
 "level and message."
 msgstr ""
+"默认情况下，每个捕获的日志消息显示模块、行号、日志级别和消息。"
 
 #: ../../../en/how-to/logging.rst:30
 msgid ""
@@ -2897,7 +3012,7 @@ msgstr ""
 
 #: ../../../en/how-to/mark.rst:4
 msgid "How to mark test functions with attributes"
-msgstr ""
+msgstr "如何用属性标记测试函数"
 
 #: ../../../en/how-to/mark.rst:6
 msgid ""
@@ -2906,44 +3021,52 @@ msgid ""
 ":ref:`API Reference<marks ref>`. Or you can list all the markers, "
 "including builtin and custom, using the CLI - :code:`pytest --markers`."
 msgstr ""
+"通过使用 ``pytest.mark`` helper，您可以轻松地在测试函数上设置元数据。"
+"你可以在 :ref:`API Reference<marks ref>` 中找到内置标记的完整列表。"
+"或者你可以使用 CLI :code:`pytest --markers` 列出所有标记，包括内置和自定义标记。"
 
 #: ../../../en/how-to/mark.rst:11
 msgid "Here are some of the builtin markers:"
-msgstr ""
+msgstr "下面是一些内置标记："
 
 #: ../../../en/how-to/mark.rst:13
 msgid ""
 ":ref:`usefixtures <usefixtures>` - use fixtures on a test function or "
 "class"
 msgstr ""
+":ref:`usefixtures <usefixtures>` - 在测试函数或类上使用 fixture "
 
 #: ../../../en/how-to/mark.rst:14
 msgid ""
 ":ref:`filterwarnings <filterwarnings>` - filter certain warnings of a "
 "test function"
 msgstr ""
+":ref:`filterwarnings <filterwarnings>` - 过滤测试函数的某些警告"
 
 #: ../../../en/how-to/mark.rst:15
 msgid ":ref:`skip <skip>` - always skip a test function"
-msgstr ""
+msgstr ":ref:`skip <skip>` - 总是跳过测试函数"
 
 #: ../../../en/how-to/mark.rst:16
 msgid ""
 ":ref:`skipif <skipif>` - skip a test function if a certain condition is "
 "met"
 msgstr ""
+":ref:`skipif <skipif>` - 如果某个条件是，则跳过测试函数"
 
 #: ../../../en/how-to/mark.rst:17
 msgid ""
 ":ref:`xfail <xfail>` - produce an \"expected failure\" outcome if a "
 "certain condition is met"
 msgstr ""
+":ref:`xfail <xfail>` - 如果满足某个条件，则产生一个 \"expected failure\" 结果"
 
 #: ../../../en/how-to/mark.rst:19
 msgid ""
 ":ref:`parametrize <parametrizemark>` - perform multiple calls to the same"
 " test function."
 msgstr ""
+":ref:`parametrize <parametrizemark>` - 对同一个测试函数执行多个调用。"
 
 #: ../../../en/how-to/mark.rst:22
 msgid ""
@@ -2952,20 +3075,23 @@ msgid ""
 "commonly used to :ref:`select tests <mark run>` on the command-line with "
 "the ``-m`` option."
 msgstr ""
+"创建自定义标记或将标记应用到整个测试类或模块很容易。"
+"这些标记可以由插件使用，也通常用于在命令行上使用 ``-m`` 选项 :ref:`select tests <mark run>`。"
 
 #: ../../../en/how-to/mark.rst:26
 msgid "See :ref:`mark examples` for examples which also serve as documentation."
-msgstr ""
+msgstr "参见 :ref:`mark examples` 获取也可作为文档使用的示例。"
 
 #: ../../../en/how-to/mark.rst:30
 msgid ""
 "Marks can only be applied to tests, having no effect on :ref:`fixtures "
 "<fixtures>`."
 msgstr ""
+"标记只能应用于测试，对 :ref:`fixtures <fixtures>` 不起作用。"
 
 #: ../../../en/how-to/mark.rst:35
 msgid "Registering marks"
-msgstr ""
+msgstr "注册标记"
 
 #: ../../../en/how-to/mark.rst:37
 msgid "You can register custom marks in your ``pytest.ini`` file like this:"
@@ -2973,19 +3099,21 @@ msgstr ""
 
 #: ../../../en/how-to/mark.rst:46
 msgid "or in your ``pyproject.toml`` file like this:"
-msgstr ""
+msgstr "或者在你的 ``pyproject.toml`` 文件如下："
 
 #: ../../../en/how-to/mark.rst:56
 msgid ""
 "Note that everything past the ``:`` after the mark name is an optional "
 "description."
 msgstr ""
+"注意，标记名后面的 ``:`` 之后的所有内容都是可选的描述。"
 
 #: ../../../en/how-to/mark.rst:58
 msgid ""
 "Alternatively, you can register new markers programmatically in a "
 ":ref:`pytest_configure <initialization-hooks>` hook:"
 msgstr ""
+"或者，你可以在 :ref:`pytest_configure <initialization-hooks>` 钩子中注册新的标记。"
 
 #: ../../../en/how-to/mark.rst:69
 msgid ""
@@ -2993,6 +3121,8 @@ msgid ""
 "(see the next section). It is recommended that third-party plugins always"
 " :ref:`register their markers <registering-markers>`."
 msgstr ""
+"注册标记出现在 pytest 的帮助文本中，并且不发出警告(参见下一节)。"
+"建议第三方插件总是 :ref:`register their markers <registering-markers>`。"
 
 #: ../../../en/how-to/mark.rst:75
 msgid "Raising errors on unknown marks"
@@ -3451,15 +3581,15 @@ msgstr ""
 
 #: ../../../en/how-to/output.rst:4
 msgid "Managing pytest's output"
-msgstr ""
+msgstr "管理 pytest 的输出"
 
 #: ../../../en/how-to/output.rst:9
 msgid "Modifying Python traceback printing"
-msgstr ""
+msgstr "修改 Python 的 traceback 打印"
 
 #: ../../../en/how-to/output.rst:11
 msgid "Examples for modifying traceback printing:"
-msgstr ""
+msgstr "修改回溯打印的示例："
 
 #: ../../../en/how-to/output.rst:26
 msgid ""
@@ -3870,33 +4000,36 @@ msgstr ""
 
 #: ../../../en/how-to/parametrize.rst:10
 msgid "How to parametrize fixtures and test functions"
-msgstr ""
+msgstr "如何参数化 fixtures 和测试函数"
 
 #: ../../../en/how-to/parametrize.rst:12
 msgid "pytest enables test parametrization at several levels:"
-msgstr ""
+msgstr "pytest 在几个级别上支持测试参数化："
 
 #: ../../../en/how-to/parametrize.rst:14
 msgid ""
 ":py:func:`pytest.fixture` allows one to :ref:`parametrize fixture "
 "functions <fixture-parametrize>`."
 msgstr ""
+":py:func:`pytest.fixture` 运行 :ref:`参数化 fixture 函数 <fixture-parametrize>`。"
 
 #: ../../../en/how-to/parametrize.rst:17
 msgid ""
 "`@pytest.mark.parametrize`_ allows one to define multiple sets of "
 "arguments and fixtures at the test function or class."
 msgstr ""
+"`@pytest.mark.parametrize`_ 允许在测试函数或类中定义多组参数和 fixture。"
 
 #: ../../../en/how-to/parametrize.rst:20
 msgid ""
 "`pytest_generate_tests`_ allows one to define custom parametrization "
 "schemes or extensions."
 msgstr ""
+"`pytest_generate_tests`_ 允许定义自定义参数化方案或扩展。"
 
 #: ../../../en/how-to/parametrize.rst:28
 msgid "``@pytest.mark.parametrize``: parametrizing test functions"
-msgstr ""
+msgstr "``@pytest.mark.parametrize``：参数化测试函数"
 
 #: ../../../en/how-to/parametrize.rst:36
 msgid ""
@@ -3905,6 +4038,8 @@ msgid ""
 "example of a test function that implements checking that a certain input "
 "leads to an expected output:"
 msgstr ""
+"内建的 :ref:`pytest.mark.parametrize ref` 装饰器支持测试函数参数的参数化。"
+"下面是一个测试函数的典型示例，它实现了检查某个输入是否导致预期输出："
 
 #: ../../../en/how-to/parametrize.rst:51
 msgid ""
@@ -3912,10 +4047,11 @@ msgid ""
 "``(test_input,expected)`` tuples so that the ``test_eval`` function will "
 "run three times using them in turn:"
 msgstr ""
+"这里，``@parametrize`` 装饰器定义了三个不同的 ``(test_input,expected)`` 元组，因此 ``test_eval`` 函数将依次使用它们运行三次："
 
 #: ../../../en/how-to/parametrize.rst:83
 msgid "Parameter values are passed as-is to tests (no copy whatsoever)."
-msgstr ""
+msgstr "参数值按原样传递给测试(没有任何复制)。"
 
 #: ../../../en/how-to/parametrize.rst:85
 msgid ""
@@ -3923,6 +4059,7 @@ msgid ""
 "test case code mutates it, the mutations will be reflected in subsequent "
 "test case calls."
 msgstr ""
+"例如，如果您传递一个列表或一个字典作为参数值，测试用例代码对它进行了突变，这种突变将反映在后续的测试用例调用中。"
 
 #: ../../../en/how-to/parametrize.rst:91
 msgid ""
@@ -3932,6 +4069,8 @@ msgid ""
 "them in the terminal as is (non-escaped), use this option in your "
 "``pytest.ini``:"
 msgstr ""
+"pytest 在默认情况下转义用于参数化的 unicode 字符串中使用的任何非 ascii 字符，因为它有几个缺点。"
+"然而，如果你想在参数化中使用 unicode 字符串并在终端中看到它们原样(非转义)，请在 ``pytest.ini`` 中使用此选项："
 
 #: ../../../en/how-to/parametrize.rst:102
 msgid ""
@@ -3939,6 +4078,8 @@ msgid ""
 " bugs depending on the OS used and plugins currently installed, so use it"
 " at your own risk."
 msgstr ""
+"按照本例中的设计，只有一对输入/输出值未通过简单测试函数。"
+"和通常的测试函数参数一样，您可以在回溯中看到输入和输出值。"
 
 #: ../../../en/how-to/parametrize.rst:107
 msgid ""
@@ -3946,6 +4087,8 @@ msgid ""
 "the simple test function.  And as usual with test function arguments, you"
 " can see the ``input`` and ``output`` values in the traceback."
 msgstr ""
+"根据本例的设计，只有一对输入/输出值不能通过简单的测试功能。"
+"和通常的测试函数参数一样，您可以在回溯中看到 ``input`` 和 ``output`` 值。"
 
 #: ../../../en/how-to/parametrize.rst:111
 msgid ""
@@ -3953,28 +4096,32 @@ msgid ""
 "module (see :ref:`mark`) which would invoke several functions with the "
 "argument sets, for instance:"
 msgstr ""
+"注意，您也可以在类或模块(参见 :ref:`mark`)，它将调用几个带有参数集的函数，例如："
 
 #: ../../../en/how-to/parametrize.rst:130
 msgid ""
 "To parametrize all tests in a module, you can assign to the "
 ":globalvar:`pytestmark` global variable:"
 msgstr ""
+"要参数化模块中的所有测试，可以赋值给 :globalvar:`pytestmark` 全局变量："
 
 #: ../../../en/how-to/parametrize.rst:148
 msgid ""
 "It is also possible to mark individual test instances within parametrize,"
 " for example with the builtin ``mark.xfail``:"
 msgstr ""
+"也可以在parameterize中标记单个测试实例，例如使用内置的 ``mark.xfail`` ："
 
 #: ../../../en/how-to/parametrize.rst:164
 msgid "Let's run this:"
-msgstr ""
+msgstr "运行："
 
 #: ../../../en/how-to/parametrize.rst:178
 msgid ""
 "The one parameter set which caused a failure previously now shows up as "
 "an \"xfailed\" (expected to fail) test."
 msgstr ""
+"先前导致失败的一个参数设置现在显示为 \"xfailed\" (预期失败)测试。"
 
 #: ../../../en/how-to/parametrize.rst:181
 msgid ""
@@ -3983,12 +4130,15 @@ msgid ""
 "behaviour of pytest is defined by the :confval:`empty_parameter_set_mark`"
 " option."
 msgstr ""
+"如果提供给 ``parametrize`` 的值是一个空列表——例如，"
+"如果它们是由某个函数动态生成的 —— pytest 的行为是由 :confval:`empty_parameter_set_mark` 选项定义的。"
 
 #: ../../../en/how-to/parametrize.rst:185
 msgid ""
 "To get all combinations of multiple parametrized arguments you can stack "
 "``parametrize`` decorators:"
 msgstr ""
+"要获得多个参数化实参的所有组合，你可以堆叠 ``parametrize`` 装饰器："
 
 #: ../../../en/how-to/parametrize.rst:198
 msgid ""
@@ -3996,10 +4146,12 @@ msgid ""
 "``x=1/y=2``, ``x=0/y=3``, and ``x=1/y=3`` exhausting parameters in the "
 "order of the decorators."
 msgstr ""
+"这将在参数设置为 ``x=0/y=2``、``x=1/y=2``、``x=0/y=3`` 和 ``x=1/y=3`` 的情况下运行测试，"
+"并按照装饰器的顺序耗尽参数。"
 
 #: ../../../en/how-to/parametrize.rst:204
 msgid "Basic ``pytest_generate_tests`` example"
-msgstr ""
+msgstr "``pytest_generate_tests`` 基本例子"
 
 #: ../../../en/how-to/parametrize.rst:206
 msgid ""
@@ -4011,6 +4163,10 @@ msgid ""
 " importantly, you can call ``metafunc.parametrize()`` to cause "
 "parametrization."
 msgstr ""
+"有时您可能希望实现自己的参数化方案或实现一些动态来确定 fixture 的参数或范围。"
+"为此，您可以使用 ``pytest_generate_tests`` 钩子，它在收集测试函数时被调用。"
+"通过传入的 ``metafunc`` 对象，您可以检查请求测试上下文，最重要的是，"
+"您可以调用 ``metafunc.parametrize()`` 来进行参数化。"
 
 #: ../../../en/how-to/parametrize.rst:214
 msgid ""
@@ -4019,24 +4175,27 @@ msgid ""
 "write a simple test accepting a ``stringinput`` fixture function "
 "argument:"
 msgstr ""
+"例如，假设我们想要运行一个接受字符串输入的测试，我们希望通过一个新的 ``pytest`` 命令行选项设置字符串输入。"
+"让我们首先编写一个接受 ``stringinput`` fixture 函数参数的简单测试："
 
 #: ../../../en/how-to/parametrize.rst:226
 msgid ""
 "Now we add a ``conftest.py`` file containing the addition of a command "
 "line option and the parametrization of our test function:"
 msgstr ""
+"现在我们添加 ``conftest.py`` 文件，其中添加了命令行选项和测试函数的参数化："
 
 #: ../../../en/how-to/parametrize.rst:247
 msgid "If we now pass two stringinput values, our test will run twice:"
-msgstr ""
+msgstr "如果我们现在传入两个 stringinput 值，我们的测试将运行两次："
 
 #: ../../../en/how-to/parametrize.rst:255
 msgid "Let's also run with a stringinput that will lead to a failing test:"
-msgstr ""
+msgstr "让我们运行 stringinput，它会导致测试失败："
 
 #: ../../../en/how-to/parametrize.rst:277
 msgid "As expected our test function fails."
-msgstr ""
+msgstr "不出所料，我们的测试函数失败了。"
 
 #: ../../../en/how-to/parametrize.rst:279
 msgid ""
@@ -4050,20 +4209,22 @@ msgid ""
 "different parameter sets, all parameter names across those sets cannot be"
 " duplicated, otherwise an error will be raised."
 msgstr ""
+"如果你没有指定 stringinput，它将被跳过，因为 ``metafunc.parametrize`` 将被调用时带有一个空的参数列表："
 
 #: ../../../en/how-to/parametrize.rst:295
 msgid "More examples"
-msgstr ""
+msgstr "更多例子"
 
 #: ../../../en/how-to/parametrize.rst:297
 msgid ""
 "For further examples, you might want to look at :ref:`more "
 "parametrization examples <paramexamples>`."
 msgstr ""
+"更多的例子，你可能参考 :ref:`parametrization examples <paramexamples>`。"
 
 #: ../../../en/how-to/plugins.rst:6
 msgid "How to install and use plugins"
-msgstr ""
+msgstr "如何安装并使用插件"
 
 #: ../../../en/how-to/plugins.rst:8
 msgid ""
@@ -4603,11 +4764,11 @@ msgstr ""
 
 #: ../../../en/how-to/tmp_path.rst:6
 msgid "How to use temporary directories and files in tests"
-msgstr ""
+msgstr "如何在测试中使用临时目录和文件"
 
 #: ../../../en/how-to/tmp_path.rst:9
 msgid "The ``tmp_path`` fixture"
-msgstr ""
+msgstr "``tmp_path`` fixture"
 
 #: ../../../en/how-to/tmp_path.rst:11
 msgid ""
@@ -4615,28 +4776,32 @@ msgid ""
 "directory unique to the test invocation, created in the `base temporary "
 "directory`_."
 msgstr ""
+"您可以使用 ``tmp_path`` fixture，它将为测试调用提供一个惟一的临时目录，在 `base temporary directory`_ 中创建。"
 
 #: ../../../en/how-to/tmp_path.rst:15
 msgid ""
 "``tmp_path`` is a :class:`pathlib.Path` object. Here is an example test "
 "usage:"
 msgstr ""
+"``tmp_path`` 是 :class:`pathlib.Path` 对象。下面一个测试例子："
 
 #: ../../../en/how-to/tmp_path.rst:32
 msgid ""
 "Running this would result in a passed test except for the last ``assert "
 "0`` line which we use to look at values:"
 msgstr ""
+"运行这个会导致一个通过的测试，除了最后的 ``assert 0`` 行，我们用来查看值："
 
 #: ../../../en/how-to/tmp_path.rst:68
 msgid "The ``tmp_path_factory`` fixture"
-msgstr ""
+msgstr "``tmp_path_factory`` fixture"
 
 #: ../../../en/how-to/tmp_path.rst:70
 msgid ""
 "The ``tmp_path_factory`` is a session-scoped fixture which can be used to"
 " create arbitrary temporary directories from any other fixture or test."
 msgstr ""
+"``tmp_path_factory`` 是一个会话范围的 fixture，可用于从任何其他 fixture 或测试创建任意临时目录。"
 
 #: ../../../en/how-to/tmp_path.rst:73
 msgid ""
@@ -4645,16 +4810,18 @@ msgid ""
 "test that uses it into its own ``tmp_path``, you can generate it once "
 "per-session to save time:"
 msgstr ""
+"例如，假设您的测试套件需要磁盘上的一个大映像，该映像是程序生成的。"
+"您可以在每个会话中生成一次映像，以节省时间，而不是为每个测试计算相同的映像，并将其使用到自己的 ``tmp_path`` 中。"
 
 #: ../../../en/how-to/tmp_path.rst:97
 msgid ""
 "See :ref:`tmp_path_factory API <tmp_path_factory factory api>` for "
 "details."
-msgstr ""
+msgstr "查看 :ref:`tmp_path_factory API <tmp_path_factory factory api>` 了解细节。"
 
 #: ../../../en/how-to/tmp_path.rst:103
 msgid "The ``tmpdir`` and ``tmpdir_factory`` fixtures"
-msgstr ""
+msgstr "``tmpdir`` 和 ``tmpdir_factory`` fixtures"
 
 #: ../../../en/how-to/tmp_path.rst:105
 msgid ""
@@ -4663,16 +4830,19 @@ msgid ""
 "`py.path.local`_ objects rather than standard :class:`pathlib.Path` "
 "objects."
 msgstr ""
+"``tmpdir`` 和 ``tmpdir_factory`` fixture 类似于 ``tmp_path`` 和 ``tmp_path_factory``，"
+"但使用/返回遗留的 `py.path.local`_ 对象而不是标准的 :class:`pathlib.Path` 对象。"
 
 #: ../../../en/how-to/tmp_path.rst:110
 msgid "These days, it is preferred to use ``tmp_path`` and ``tmp_path_factory``."
-msgstr ""
+msgstr "现在，人们更喜欢使用 ``tmp_path`` 和 ``tmp_path_factory``。"
 
 #: ../../../en/how-to/tmp_path.rst:112
 msgid ""
 "In order to help modernize old code bases, one can run pytest with the "
 "legacypath plugin disabled:"
 msgstr ""
+"为了帮助更新旧的代码库，可以在禁用 legacypath 插件的情况下运行 pytest："
 
 #: ../../../en/how-to/tmp_path.rst:119
 msgid ""
@@ -4680,16 +4850,18 @@ msgid ""
 "permanently set as part of the :confval:`addopts` parameter in the config"
 " file."
 msgstr ""
+"这将在使用遗留路径的测试中触发错误。它也可以永久设置为配置文件中的 :confval:`addopts` 参数的一部分。"
 
 #: ../../../en/how-to/tmp_path.rst:123
 msgid ""
 "See :fixture:`tmpdir <tmpdir>` :fixture:`tmpdir_factory <tmpdir_factory>`"
 " API for details."
 msgstr ""
+"查阅  :fixture:`tmpdir <tmpdir>` :fixture:`tmpdir_factory <tmpdir_factory>` 了解细节。"
 
 #: ../../../en/how-to/tmp_path.rst:130
 msgid "The default base temporary directory"
-msgstr ""
+msgstr "默认的基本临时目录"
 
 #: ../../../en/how-to/tmp_path.rst:132
 msgid ""
@@ -4698,6 +4870,8 @@ msgid ""
 "``NUM`` will be incremented with each test run.  Moreover, entries older "
 "than 3 temporary directories will be removed."
 msgstr ""
+"临时目录默认创建为系统临时目录的子目录。基本名将是 ``pytest-NUM``，其中 ``NUM`` 将随着每次测试的运行而递增。"
+"此外，超过 3 个临时目录的条目将被删除。"
 
 #: ../../../en/how-to/tmp_path.rst:137
 msgid ""
@@ -4706,16 +4880,18 @@ msgid ""
 "effectively meaning the temporary directories of only the most recent run"
 " will be kept."
 msgstr ""
+"当前不能更改条目的数量，但使用 ``--basetemp`` 选项将在每次运行前删除目录，这实际上意味着只保留最近运行的临时目录。"
 
 #: ../../../en/how-to/tmp_path.rst:141
 msgid "You can override the default temporary directory setting like this:"
-msgstr ""
+msgstr "你可以像这样覆盖默认的临时目录设置："
 
 #: ../../../en/how-to/tmp_path.rst:149
 msgid ""
 "The contents of ``mydir`` will be completely removed, so make sure to use"
 " a directory for that purpose only."
 msgstr ""
+"``mydir`` 的内容将被完全删除，所以请确保使用的目录仅用于此目的。"
 
 #: ../../../en/how-to/tmp_path.rst:152
 msgid ""
@@ -4724,6 +4900,8 @@ msgid ""
 "processes such that all temporary data lands below a single per-test run "
 "basetemp directory."
 msgstr ""
+"在使用 ``pytest-xdist`` 在本地机器上分发测试时，请注意为子进程自动配置 basetemp 目录，"
+"以便所有临时数据都位于每个测试运行的 basetemp 目录下。"
 
 #: ../../../en/how-to/unittest.rst:6
 msgid "How to use ``unittest``-based tests with pytest"
@@ -4987,11 +5165,11 @@ msgstr ""
 
 #: ../../../en/how-to/usage.rst:5
 msgid "How to invoke pytest"
-msgstr ""
+msgstr "如何调用 pytest"
 
 #: ../../../en/how-to/usage.rst:7
 msgid ":ref:`Complete pytest command-line flag reference <command-line-flags>`"
-msgstr ""
+msgstr ":ref:`完整 pytest 命令行标志参考 <command-line-flags>`"
 
 #: ../../../en/how-to/usage.rst:9
 msgid ""
@@ -5002,28 +5180,32 @@ msgid ""
 "generally, pytest follows :ref:`standard test discovery rules <test "
 "discovery>`."
 msgstr ""
+"通常，pytest 是通过命令 ``pytest`` 调用的（参见下面 :ref:`调用 pytest 的其他方法 <invoke-other>` ）。"
+"这将在当前目录及其子目录中所有文件名遵循 ``test_*.py`` 或 ``*_test.py`` 形式的文件中执行所有测试。"
+"更一般地，pytest 遵循 :ref:`标准测试发现规则 <test discovery>`。"
 
 #: ../../../en/how-to/usage.rst:18
 msgid "Specifying which tests to run"
-msgstr ""
+msgstr "指定要运行的测试"
 
 #: ../../../en/how-to/usage.rst:20
 msgid ""
 "Pytest supports several ways to run and select tests from the command-"
 "line."
 msgstr ""
+"pytest 支持多种方式来运行和从命令行中选择测试。"
 
 #: ../../../en/how-to/usage.rst:22
 msgid "**Run tests in a module**"
-msgstr ""
+msgstr "**在模块中运行测试**"
 
 #: ../../../en/how-to/usage.rst:28
 msgid "**Run tests in a directory**"
-msgstr ""
+msgstr "**在目录中运行测试**"
 
 #: ../../../en/how-to/usage.rst:34
 msgid "**Run tests by keyword expressions**"
-msgstr ""
+msgstr "**借助 keyword 表达式运行测试**"
 
 #: ../../../en/how-to/usage.rst:40
 msgid ""
@@ -5033,10 +5215,12 @@ msgid ""
 "above will run ``TestMyClass.test_something``  but not "
 "``TestMyClass.test_method_simple``."
 msgstr ""
+"这将运行包含匹配给定 *字符串表达式* （不区分大小写）的名称的测试，其中可能包括使用文件名、类名和函数名作为变量的 Python 算子。"
+"上面的例子将运行 ``TestMyClass.test_something`` 而不是 ``TestMyClass.test_method_simple``。"
 
 #: ../../../en/how-to/usage.rst:46
 msgid "**Run tests by node ids**"
-msgstr ""
+msgstr "**借助 node ID 运行测试**"
 
 #: ../../../en/how-to/usage.rst:48
 msgid ""
@@ -5044,80 +5228,86 @@ msgid ""
 "module filename followed by specifiers like class names, function names "
 "and parameters from parametrization, separated by ``::`` characters."
 msgstr ""
+"每个收集的测试都被分配一个唯一的 ``nodeid`` ，它由模块文件名和类名、函数名和参数化参数等说明符组成，用 ``::`` 字符分隔。"
 
 #: ../../../en/how-to/usage.rst:51
 msgid "To run a specific test within a module:"
-msgstr ""
+msgstr "在模块中运行特定的测试："
 
 #: ../../../en/how-to/usage.rst:58
 msgid "Another example specifying a test method in the command line:"
-msgstr ""
+msgstr "在命令行中指定测试方法的另一个示例："
 
 #: ../../../en/how-to/usage.rst:64
 msgid "**Run tests by marker expressions**"
-msgstr ""
+msgstr "**借助 marker 表达式运行测试**"
 
 #: ../../../en/how-to/usage.rst:70
 msgid ""
 "Will run all tests which are decorated with the ``@pytest.mark.slow`` "
 "decorator."
 msgstr ""
+"将运行所有带有 ``@pytest.mark.slow`` 标记装饰的测试。"
 
 #: ../../../en/how-to/usage.rst:72
 msgid "For more information see :ref:`marks <mark>`."
-msgstr ""
+msgstr "更多细节见 :ref:`marks <mark>`。"
 
 #: ../../../en/how-to/usage.rst:74
 msgid "**Run tests from packages**"
-msgstr ""
+msgstr "**运行包中的测试**"
 
 #: ../../../en/how-to/usage.rst:80
 msgid ""
 "This will import ``pkg.testing`` and use its filesystem location to find "
 "and run tests from."
 msgstr ""
+"这将导入 ``pkg.testing``，并使用其文件系统位置从中查找和运行测试。"
 
 #: ../../../en/how-to/usage.rst:84
 msgid "Getting help on version, option names, environment variables"
-msgstr ""
+msgstr "获取关于版本、选项名称、环境变量的帮助"
 
 #: ../../../en/how-to/usage.rst:96
 msgid "Profiling test execution duration"
-msgstr ""
+msgstr "分析测试执行持续时间"
 
 #: ../../../en/how-to/usage.rst:100
 msgid "To get a list of the slowest 10 test durations over 1.0s long:"
-msgstr ""
+msgstr "要获得超过 1.0 秒的最慢的 10 个测试持续时间的列表："
 
 #: ../../../en/how-to/usage.rst:106
 msgid ""
 "By default, pytest will not show test durations that are too small "
 "(<0.005s) unless ``-vv`` is passed on the command-line."
 msgstr ""
+"默认情况下，pytest 不会显示太小的测试持续时间(<0.005s)，除非在命令行中传递 ``-vv``。"
 
 #: ../../../en/how-to/usage.rst:110
 msgid "Managing loading of plugins"
-msgstr ""
+msgstr "管理插件的加载"
 
 #: ../../../en/how-to/usage.rst:113
 msgid "Early loading plugins"
-msgstr ""
+msgstr "提前加载插件"
 
 #: ../../../en/how-to/usage.rst:115
 msgid ""
 "You can early-load plugins (internal and external) explicitly in the "
 "command-line with the ``-p`` option::"
 msgstr ""
+"你可以用 ``-p`` 选项显式地在命令行中提前加载插件（内部和外部）："
 
 #: ../../../en/how-to/usage.rst:119
 msgid "The option receives a ``name`` parameter, which can be:"
-msgstr ""
+msgstr "该选项接收 ``name`` 参数，它可以是："
 
 #: ../../../en/how-to/usage.rst:121
 msgid ""
 "A full module dotted name, for example ``myproject.plugins``. This dotted"
 " name must be importable."
 msgstr ""
+"完整的模块名，例如 ``myproject.plugins``。这个虚线的名字必须是可以输入的。"
 
 #: ../../../en/how-to/usage.rst:122
 msgid ""
@@ -5125,36 +5315,41 @@ msgid ""
 "``setuptools`` when the plugin is registered. For example to early-load "
 "the :pypi:`pytest-cov` plugin you can use::"
 msgstr ""
+"插件的入口点名称。这是插件注册时传递给 ``setuptools`` 的名称。"
+"例如，要提前加载 :pypi:`pytest-cov` 插件，你可以使用::"
 
 #: ../../../en/how-to/usage.rst:129
 msgid "Disabling plugins"
-msgstr ""
+msgstr "禁用插件"
 
 #: ../../../en/how-to/usage.rst:131
 msgid ""
 "To disable loading specific plugins at invocation time, use the ``-p`` "
 "option together with the prefix ``no:``."
 msgstr ""
+"要在调用时禁用加载特定的插件，请使用 ``-p`` 选项和前缀 ``no:``。"
 
 #: ../../../en/how-to/usage.rst:134
 msgid ""
 "Example: to disable loading the plugin ``doctest``, which is responsible "
 "for executing doctest tests from text files, invoke pytest like this:"
 msgstr ""
+"示例：要禁用加载插件 ``doctest``，该插件负责从文本文件执行 doctest 测试，请像这样调用 pytest："
 
 #: ../../../en/how-to/usage.rst:145
 msgid "Other ways of calling pytest"
-msgstr ""
+msgstr "调用 pytest 的其他方法"
 
 #: ../../../en/how-to/usage.rst:150
 msgid "Calling pytest through ``python -m pytest``"
-msgstr ""
+msgstr "通过 ``python -m pytest`` 调用 pytest"
 
 #: ../../../en/how-to/usage.rst:152
 msgid ""
 "You can invoke testing through the Python interpreter from the command "
 "line:"
 msgstr ""
+"你可以从命令行通过 Python 解释器调用测试："
 
 #: ../../../en/how-to/usage.rst:158
 msgid ""
@@ -5162,14 +5357,15 @@ msgid ""
 "[...]`` directly, except that calling via ``python`` will also add the "
 "current directory to ``sys.path``."
 msgstr ""
+"这几乎等同于调用命令行脚本 ``pytest [...]`` 只是通过 ``python`` 调用也会将当前目录添加到 ``sys.path`` 中。"
 
 #: ../../../en/how-to/usage.rst:165
 msgid "Calling pytest from Python code"
-msgstr ""
+msgstr "从 Python 代码调用 pytest"
 
 #: ../../../en/how-to/usage.rst:167
 msgid "You can invoke ``pytest`` from Python code directly:"
-msgstr ""
+msgstr "你可以直接从 Python 代码调用 ``pytest`` ："
 
 #: ../../../en/how-to/usage.rst:173
 msgid ""
@@ -5177,14 +5373,15 @@ msgid ""
 "not raise :class:`SystemExit` but return the :ref:`exit code <exit-"
 "codes>` instead. You can pass in options and arguments:"
 msgstr ""
+"这就像从命令行调用 \"pytest\" 一样。它不会引发 :class:`SystemExit` ，而是返回 :ref:`退出代码 <exit-codes>`。你可以传入选项和参数："
 
 #: ../../../en/how-to/usage.rst:181
 msgid "You can specify additional plugins to ``pytest.main``:"
-msgstr ""
+msgstr "你可以为 ``pytest.main`` 指定额外的插件："
 
 #: ../../../en/how-to/usage.rst:199
 msgid "Running it will show that ``MyPlugin`` was added and its hook was invoked:"
-msgstr ""
+msgstr "运行它会显示 ``MyPlugin`` 被添加并且它的钩子被调用："
 
 #: ../../../en/how-to/usage.rst:210
 msgid ""
@@ -5195,6 +5392,9 @@ msgid ""
 "this reason, making multiple calls to ``pytest.main()`` from the same "
 "process (in order to re-run tests, for example) is not recommended."
 msgstr ""
+"调用 ``pytest.main()`` 将导致导入您的测试和它们导入的任何模块。"
+"由于 python 的 import 系统的缓存机制，从同一进程中对 ``pytest.main()`` 的后续调用将不会反映调用之间对那些文件的更改。"
+"因此，不建议从同一个进程多次调用 ``pytest.main()`` (例如，为了重新运行测试)。"
 
 #: ../../../en/how-to/writing_hook_functions.rst:4
 msgid "Writing hook functions"
